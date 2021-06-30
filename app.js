@@ -29,31 +29,24 @@ while (metrosCuadrados <= 0 || !metrosCuadrados) {
 
 // clase para productos
 class producto {
-	constructor(nombre, medida, caja, precio) {
+	constructor(nombre, medida, caja, precio, imagen) {
 		this.nombre = nombre;
 		this.medida = medida;
 		this.caja = caja;
 		this.precio = precio;
+		this.imagen = imagen;
 	}
-	cuotas(cantidadCuotas) {
-		switch (cantidadCuotas) {
-			case 3:
-				this.precio *= 1.15;
-				break;
-			case 12:
-				this.precio *= 1.25;
-				break;
-			case 18:
-				this.precio *= 1.3;
-				break;
-		}
+	foto() {
+		document.write(
+			`<h1>${modelo.nombre}</h1><img src="imagenes/${this.imagen}" alt="porcelanato ${this.nombre}">`
+		);
 	}
 }
 
 // carga de productos - creacion de objetos
-const carrara = new producto('Carrara', '60x120', 1.44, 5000);
-const onix = new producto('Onix', '60x60', 1.44, 4200);
-const bauhaus = new producto('Bauhaus', '58x58', 1.35, 2800);
+const carrara = new producto('Carrara', '60x120', 1.44, 5000, 'carrara.jpg');
+const onix = new producto('Onix', '60x60', 1.44, 4200, 'onix.jpg');
+const bauhaus = new producto('Bauhaus', '58x58', 1.35, 2800, 'bauhaus.jpg');
 
 // cargo el modelo elegido
 switch (numModelo) {
@@ -75,7 +68,7 @@ function cantidad(metrosCuadrados) {
 }
 function precioPorcelanato(cantidad) {
 	let pisoFinal = modelo.precio * cantidad;
-	console.log(`El precio total del piso es de $${pisoFinal}`);
+	console.log(`El precio total del piso ${modelo.nombre} es de $${pisoFinal}`);
 	return pisoFinal;
 }
 function cantidadPegamentoPastina(cantidad) {
@@ -109,3 +102,5 @@ let precioTotal = precioFinal(
 alert(
 	`Por ${cantidadReal}m2 (${cantidadDeCajas} cajas) de porcelanato ${modelo.medida} + ${cantPegamentopastina} bolsas de pegamento de 30kg + ${cantPegamentopastina} bolsas de pastina de 1kg,  el precio total es de : $${precioTotal}`
 );
+// muestro foto del modelo elegido
+modelo.foto();
