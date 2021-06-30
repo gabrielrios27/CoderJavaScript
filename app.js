@@ -4,6 +4,7 @@ let cantidadDeCajas = 0;
 let precioPegamento = 1200;
 let precioPastina = 150;
 let modelo = '';
+
 // datos que ingresa el cliente
 let numModelo = Number(
 	prompt(
@@ -11,11 +12,7 @@ let numModelo = Number(
 	)
 );
 let metrosCuadrados = Number(prompt('Ingrese la cantidad de metros cuadrados a cubrir'));
-// let medida = Number(
-// 	prompt(
-// 		'Elija la medida del porcelanato: para medida 60x60 presione 1 ; para medida 60x120 presione 2'
-// 	)
-// );
+
 // validacion
 while (numModelo != 1 && numModelo != 2 && numModelo != 3) {
 	alert('Usted a ingresado un numero de modelo incorrecto');
@@ -30,14 +27,6 @@ while (metrosCuadrados <= 0 || !metrosCuadrados) {
 	metrosCuadrados = Number(prompt('Ingrese la cantidad de metros cuadrados a cubrir'));
 }
 
-// while (medida != 1 && medida != 2) {
-// 	alert('Usted a ingresado un numero de medida incorrecto');
-// 	medida = Number(
-// 		prompt(
-// 			'Elija la medida del porcelanato: para medida 60x60 presione 1 ; para medida 60x120 presione 2'
-// 		)
-// 	);
-// }
 // clase para productos
 class producto {
 	constructor(nombre, medida, caja, precio) {
@@ -60,10 +49,12 @@ class producto {
 		}
 	}
 }
-// carga de productos
+
+// carga de productos - creacion de objetos
 const carrara = new producto('Carrara', '60x120', 1.44, 5000);
 const onix = new producto('Onix', '60x60', 1.44, 4200);
 const bauhaus = new producto('Bauhaus', '58x58', 1.35, 2800);
+
 // cargo el modelo elegido
 switch (numModelo) {
 	case 1:
@@ -76,12 +67,12 @@ switch (numModelo) {
 		modelo = bauhaus;
 		break;
 }
+
 // funciones
 function cantidad(metrosCuadrados) {
 	cantidadDeCajas = Math.ceil(metrosCuadrados / modelo.caja);
 	return cantidadDeCajas * modelo.caja;
 }
-
 function precioPorcelanato(cantidad) {
 	let pisoFinal = modelo.precio * cantidad;
 	console.log(`El precio total del piso es de $${pisoFinal}`);
@@ -100,10 +91,10 @@ let precioTotalPastina = (precioPastina, cantPegamentopastina) => {
 	console.log(`El precio total de la pastina es de $${pastinaFinal}`);
 	return pastinaFinal;
 };
-
 function precioFinal(preciopiso, precioTotalPegamento, precioTotalPastina) {
 	return preciopiso + precioTotalPegamento + precioTotalPastina;
 }
+
 // procesamiento de datos-llamo a las funciones
 let cantidadReal = cantidad(metrosCuadrados).toFixed(2);
 let preciopiso = precioPorcelanato(cantidadReal);
@@ -113,6 +104,7 @@ let precioTotal = precioFinal(
 	precioTotalPegamento(precioPegamento, cantPegamentopastina),
 	precioTotalPastina(precioPastina, cantPegamentopastina)
 );
+
 // mensaje en pantalla
 alert(
 	`Por ${cantidadReal}m2 (${cantidadDeCajas} cajas) de porcelanato ${modelo.medida} + ${cantPegamentopastina} bolsas de pegamento de 30kg + ${cantPegamentopastina} bolsas de pastina de 1kg,  el precio total es de : $${precioTotal}`
