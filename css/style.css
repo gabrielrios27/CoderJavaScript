@@ -1,36 +1,54 @@
-body {
+* {
 	margin: 0;
 	padding: 0;
-	width: 100%;
-	height: 100vh;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+body {
+	display: flex;
+	justify-content: center;
+}
+.header {
+	width: 100vw;
+	height: 70px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgb(250, 250, 250);
+}
+.header__logo {
+	height: 70px;
+}
+.header__lectorQr,
+.header__carrito {
+	width: 236.484px;
+	display: block;
+	text-align: center;
+}
+.info {
+	width: 50%;
+	margin-top: 70px;
+	padding: 20px 40px;
+}
+.info__nombre {
+	margin: 20px 0px;
+}
+.datos {
+	width: 50%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	position: relative;
+	background-color: rgb(248, 244, 232);
+	padding: 20px;
+	margin-top: 70px;
 }
-.fondo-coder {
-	position: absolute;
-	/* z-index: -1; */
-	top: 0;
-	left: 0;
-	background-image: url(../coder-400-400.png);
-	background-position: center;
-	background-repeat: no-repeat;
-	width: 400px;
-	height: 400px;
-	transform: scale(0);
-	opacity: 0;
-	transition: 1s;
-	animation: rotar-fondo 4s linear forwards;
+.datos__box {
+	margin: 5px;
 }
-@keyframes rotar-fondo {
-	50% {
-		transform: scale(1) rotate(360deg);
-		opacity: 1;
-	}
-	100% {
-		transform: scale(0.7) rotate(360deg);
-		opacity: 1;
-	}
+.datos__button {
+	margin: 8px;
 }
