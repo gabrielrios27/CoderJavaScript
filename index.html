@@ -10,7 +10,10 @@
 	<body>
 		<header class="header">
 			<img src="imagenes/2.jpg" alt="logo de Modern Home Allentiac" class="header__logo" />
-			<a href="" class="header__lectorQr">Escanear nuevo producto</a>
+			<a href="" class="header__lectorQr"
+				><img class="header__fondoQr" src="imagenes/fondo-qr.png" alt="codigo qr de fondo" />
+				<span class="header__span">Escanear</span>
+			</a>
 			<a href="" class="header__carrito">Carrito de Presupuestos</a>
 		</header>
 		<section class="info">
@@ -23,15 +26,21 @@
 		</section>
 		<section class="datos">
 			<div class="datos__box">
+				<label for="codigo" class="datos__label datos__label--cantidad"
+					>Ingrese el codigo del Porcelanato</label
+				>
+				<input type="text" name="codigo" id="codigo" class="datos__cantidad" />
+			</div>
+			<div class="datos__box">
 				<label for="cantidad" class="datos__label datos__label--cantidad"
 					>Ingrese la cantidad en Metros cuadrados (m2)</label
 				>
-				<input type="text" class="datos__cantidad" />
+				<input type="text" name="cantidad" id="cantidad" class="datos__cantidad" />
 			</div>
 			<div class="datos__box">
 				<input type="checkbox" name="desperdicio" id="desperdicio" class="datos__checkbox" />
 				<label for="desperdicio" class="datos__label"
-					>Agregar 10% de piso por el desperdicio en los cortes</label
+					>Agregar un 10% de piso para el desperdicio en los cortes</label
 				>
 			</div>
 			<div class="datos__box">
@@ -48,8 +57,30 @@
 				<input type="checkbox" name="pastina" id="pastina" class="datos__checkbox" />
 				<label for="pastina" class="datos__label">Agregar pastina Full-mix</label>
 			</div>
-			<button class="datos__button">Agregar a presupuesto</button>
+			<button class="datos__button" id="btnPre">Agregar a presupuesto</button>
 		</section>
-		<!-- <script src="./app.js"></script> -->
+
+		<section class="presupuesto" id="presupuesto"></section>
+
+		<!-- escaner de qr -->
+
+		<!-- <input type="text" size="16" placeholder="Lector QR" class="qrcode-text" />
+			<label
+			class="qrcode-text-btn"
+				><input
+						type="file"
+						accept="image/*"
+						capture="environment"
+						onclick="return showQRIntro();"
+						onchange="openQRCamera(this);"
+						tabindex="-1"
+				/>
+			</label>
+		<input type="button" value="Go" disabled /> -->
+
+		<script src="./app.js"></script>
+
+		<!-- PROBANDO EL LECTOR QR -->
+		<!-- <script src="./app2.js"></script> -->
 	</body>
 </html>
