@@ -87,20 +87,26 @@ body {
 input {
 	font-size: 14pt;
 } */
+.lectorQR {
+	position: relative;
+	display: inline-block;
+}
 input,
 label {
 	vertical-align: middle;
 }
 .qrcode-text {
-	padding-right: 1.7em;
+	padding-right: 1em;
 	margin-right: 0;
 }
 .qrcode-text-btn {
+	position: absolute;
+	right: -30px;
 	display: inline-block;
 	background: url(//dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg)
 		50% 50% no-repeat;
-	height: 1em;
-	width: 1.7em;
+	height: 1.5em;
+	width: 2.2em;
 	margin-left: -1.7em;
 	cursor: pointer;
 }
