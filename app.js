@@ -108,6 +108,13 @@ function mostrar() {
 		presupuesto.appendChild(img);
 		img.setAttribute('src', `imagenes/${modelo.imagen}`);
 		img.setAttribute('class', 'presupuesto__img');
+		// cambio la seccion info
+		document.getElementById('porcNombre').textContent = ` ${modelo.nombre}`;
+		document.getElementById('porcMedida').textContent = `Medida: ${modelo.medida}`;
+		document.getElementById(
+			'porcCaja'
+		).textContent = `Metros cuadrados por caja: ${modelo.caja} m2`;
+		document.getElementById('porcPrecio').textContent = `Precio: $${modelo.precio}`;
 	}
 }
 // ordeno los productos de menor a mayor precio y los muestro por consola

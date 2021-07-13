@@ -17,12 +17,12 @@
 			<a href="" class="header__carrito">Carrito de Presupuestos</a>
 		</header>
 		<section class="info">
-			<h1 class="info__nombre">Porcelanato nombre</h1>
-			<h4 class="info__detalle">Material:</h4>
-			<h4 class="info__detalle">Tipo:</h4>
-			<h4 class="info__detalle">Medida:</h4>
-			<h4 class="info__detalle">Caja</h4>
-			<h4 class="info__detalle">Precio:</h4>
+			<h1 class="info__nombre">Porcelanato <span id="porcNombre"></span></h1>
+			<!-- <h4 class="info__detalle">Material:</h4> -->
+			<!-- <h4 class="info__detalle">Tipo:</h4> -->
+			<h4 class="info__detalle" id="porcMedida">Medida:</h4>
+			<h4 class="info__detalle" id="porcCaja">Caja</h4>
+			<h4 class="info__detalle" id="porcPrecio">Precio:</h4>
 		</section>
 		<section class="datos">
 			<div class="datos__box">
@@ -37,7 +37,7 @@
 				>
 				<input type="text" name="cantidad" id="cantidad" class="datos__cantidad" />
 			</div>
-			<div class="datos__box">
+			<!-- <div class="datos__box">
 				<input type="checkbox" name="desperdicio" id="desperdicio" class="datos__checkbox" />
 				<label for="desperdicio" class="datos__label"
 					>Agregar un 10% de piso para el desperdicio en los cortes</label
@@ -56,7 +56,7 @@
 			<div class="datos__box">
 				<input type="checkbox" name="pastina" id="pastina" class="datos__checkbox" />
 				<label for="pastina" class="datos__label">Agregar pastina Full-mix</label>
-			</div>
+			</div> -->
 			<button class="datos__button" id="btnPre">Agregar a presupuesto</button>
 		</section>
 
