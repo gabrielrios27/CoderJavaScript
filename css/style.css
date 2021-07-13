@@ -86,7 +86,7 @@ body {
 /* body,
 input {
 	font-size: 14pt;
-}
+} */
 input,
 label {
 	vertical-align: middle;
@@ -110,4 +110,4 @@ label {
 	width: 1px;
 	height: 1px;
 	opacity: 0;
-} */
+}
