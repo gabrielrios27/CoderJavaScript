@@ -6,16 +6,78 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<link rel="stylesheet" href="css/style.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@600&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
 		<header class="header">
 			<img src="imagenes/2.jpg" alt="logo de Modern Home Allentiac" class="header__logo" />
-			<a href="" class="header__lectorQr"
+			<!-- <a href="" class="header__lectorQr"
 				><img class="header__fondoQr" src="imagenes/fondo-qr.png" alt="codigo qr de fondo" />
 				<span class="header__span">Escanear</span>
-			</a>
+			</a> -->
 			<a href="" class="header__carrito">Carrito de Presupuestos</a>
 		</header>
+
+		<section class="datos">
+			<div class="datos__container">
+				<div class="datos__box">
+					<label for="codigo" class="datos__label"
+						>Ingrese el codigo del Porcelanato o presione en el icono QR para tomar una foto del QR
+						a escanear</label
+					>
+					<div class="lectorQR">
+						<input
+							type="text"
+							name="codigo"
+							id="codigo"
+							size="16"
+							placeholder="Lector QR"
+							class="qrcode-text datos__input"
+						/>
+						<label class="qrcode-text-btn"
+							><input
+								type="file"
+								accept="image/*"
+								capture="environment"
+								onclick="return showQRIntro();"
+								onchange="openQRCamera(this);"
+								tabindex="-1"
+							/>
+						</label>
+					</div>
+				</div>
+				<div class="datos__box">
+					<label for="cantidad" class="datos__label"
+						>Ingrese la cantidad en Metros cuadrados (m2)</label
+					>
+					<input type="text" name="cantidad" id="cantidad" class="datos__input" />
+				</div>
+				<!-- <div class="datos__box">
+					<input type="checkbox" name="desperdicio" id="desperdicio" class="datos__checkbox" />
+					<label for="desperdicio" class="datos__label"
+						>Agregar un 10% de piso para el desperdicio en los cortes</label
+					>
+				</div>
+				<div class="datos__box">
+					<input type="checkbox" name="zocalos" id="zocalos" class="datos__checkbox" />
+					<label for="zocalos" class="datos__label"
+						>Agregar cantidad de piso extra para zocalos</label
+					>
+				</div>
+				<div class="datos__box">
+					<input type="checkbox" name="pegamento" id="pegamento" class="datos__checkbox" />
+					<label for="pegamento" class="datos__label">Agregar pegamento Full-mix</label>
+				</div>
+				<div class="datos__box">
+					<input type="checkbox" name="pastina" id="pastina" class="datos__checkbox" />
+					<label for="pastina" class="datos__label">Agregar pastina Full-mix</label>
+				</div> -->
+				<button class="datos__button" id="btnPre">Agregar a presupuesto</button>
+			</div>
+		</section>
 		<section class="info">
 			<h1 class="info__nombre">Porcelanato <span id="porcNombre"></span></h1>
 			<!-- <h4 class="info__detalle">Material:</h4> -->
@@ -24,58 +86,9 @@
 			<h4 class="info__detalle" id="porcCaja">Caja</h4>
 			<h4 class="info__detalle" id="porcPrecio">Precio:</h4>
 		</section>
-		<section class="datos">
-			<div class="datos__box">
-				<label for="codigo" class="datos__label datos__label--cantidad"
-					>Ingrese el codigo del Porcelanato</label
-				>
-				<input type="text" name="codigo" id="codigo" class="datos__cantidad" />
-			</div>
-			<div class="datos__box">
-				<label for="cantidad" class="datos__label datos__label--cantidad"
-					>Ingrese la cantidad en Metros cuadrados (m2)</label
-				>
-				<input type="text" name="cantidad" id="cantidad" class="datos__cantidad" />
-			</div>
-			<!-- <div class="datos__box">
-				<input type="checkbox" name="desperdicio" id="desperdicio" class="datos__checkbox" />
-				<label for="desperdicio" class="datos__label"
-					>Agregar un 10% de piso para el desperdicio en los cortes</label
-				>
-			</div>
-			<div class="datos__box">
-				<input type="checkbox" name="zocalos" id="zocalos" class="datos__checkbox" />
-				<label for="zocalos" class="datos__label"
-					>Agregar cantidad de piso extra para zocalos</label
-				>
-			</div>
-			<div class="datos__box">
-				<input type="checkbox" name="pegamento" id="pegamento" class="datos__checkbox" />
-				<label for="pegamento" class="datos__label">Agregar pegamento Full-mix</label>
-			</div>
-			<div class="datos__box">
-				<input type="checkbox" name="pastina" id="pastina" class="datos__checkbox" />
-				<label for="pastina" class="datos__label">Agregar pastina Full-mix</label>
-			</div> -->
-			<button class="datos__button" id="btnPre">Agregar a presupuesto</button>
-		</section>
-
 		<section class="presupuesto" id="presupuesto"></section>
 
 		<!-- escaner de qr -->
-		<div class="lectorQR">
-			<input type="text" size="16" placeholder="Lector QR" class="qrcode-text" />
-			<label class="qrcode-text-btn"
-				><input
-					type="file"
-					accept="image/*"
-					capture="environment"
-					onclick="return showQRIntro();"
-					onchange="openQRCamera(this);"
-					tabindex="-1"
-				/>
-			</label>
-		</div>
 
 		<!-- <input type="button" value="Go" disabled /> -->
 
