@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Generador de Presupuesto</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@600&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<header class="header">
+			<a class="header__enlace header__enlace--rad-right" href="index.html"
+				><img src="imagenes/2.jpg" alt="logo de Modern Home Allentiac" class="header__logo"
+			/></a>
+			<a href="calculador.html" class="header__enlace">Calculador</a>
+			<a href="presupuesto.html" class="header__enlace header__enlace--rad-left"
+				>Carrito de Presupuestos</a
+			>
+		</header>
+
+		<section id="galeria" class="galeria"></section>
+		<section class="datos">
+			<div class="datos__container">
+				<div class="datos__box">
+					<!-- escaner de qr -->
+					<label for="codigo" class="datos__label"
+						>Ingrese el codigo del Porcelanato o presione en el icono QR para tomar una foto del QR
+						a escanear</label
+					>
+					<div class="lectorQR">
+						<input
+							type="text"
+							name="codigo"
+							id="codigo"
+							size="16"
+							placeholder="Lector QR"
+							class="qrcode-text datos__input"
+						/>
+						<label class="qrcode-text-btn"
+							><input
+								type="file"
+								accept="image/*"
+								capture="environment"
+								onclick="return showQRIntro();"
+								onchange="openQRCamera(this);"
+								tabindex="-1"
+							/>
+						</label>
+					</div>
+				</div>
+				<div class="datos__box">
+					<label for="cantidad" class="datos__label"
+						>Ingrese la cantidad en Metros cuadrados (m2)</label
+					>
+					<input type="text" name="cantidad" id="cantidad" class="datos__input" />
+				</div>
+				<!-- <div class="datos__box">
+					<input type="checkbox" name="desperdicio" id="desperdicio" class="datos__checkbox" />
+					<label for="desperdicio" class="datos__label"
+						>Agregar un 10% de piso para el desperdicio en los cortes</label
+					>
+				</div>
+				<div class="datos__box">
+					<input type="checkbox" name="zocalos" id="zocalos" class="datos__checkbox" />
+					<label for="zocalos" class="datos__label"
+						>Agregar cantidad de piso extra para zocalos</label
+					>
+				</div>
+				<div class="datos__box">
+					<input type="checkbox" name="pegamento" id="pegamento" class="datos__checkbox" />
+					<label for="pegamento" class="datos__label">Agregar pegamento Full-mix</label>
+				</div>
+				<div class="datos__box">
+					<input type="checkbox" name="pastina" id="pastina" class="datos__checkbox" />
+					<label for="pastina" class="datos__label">Agregar pastina Full-mix</label>
+				</div> -->
+				<button class="datos__button" id="btnPre">Agregar a presupuesto</button>
+			</div>
+		</section>
+		<section class="info">
+			<h1 class="info__nombre">Porcelanato <span id="porcNombre"></span></h1>
+			<!-- <h4 class="info__detalle">Material:</h4> -->
+			<!-- <h4 class="info__detalle">Tipo:</h4> -->
+			<h4 class="info__detalle" id="porcMedida">Medida:</h4>
+			<h4 class="info__detalle" id="porcCaja">Caja</h4>
+			<h4 class="info__detalle" id="porcPrecio">Precio:</h4>
+		</section>
+		<section class="presupuesto" id="presupuesto"></section>
+
+		<!-- --------------------------------------------------- -->
+		<script src="./app.js"></script>
+
+		<!-- PROBANDO EL LECTOR QR -->
+		<script src="./app2.js"></script>
+		<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.js"
+			integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
