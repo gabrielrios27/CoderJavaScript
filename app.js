@@ -28,7 +28,26 @@ const bauhaus = new producto(3, 'Bauhaus', '58x58', 1.35, 2800, 'bauhaus.jpg');
 const porcelanatos = [carrara, onix, bauhaus];
 
 // funciones
-
+function imprimirPorc() {
+	porcelanatos.forEach((porc) => {
+		let galeria = document.getElementById('galeria');
+		let img = document.createElement('img');
+		img.setAttribute('src', `imagenes/${porc.imagen}`);
+		img.setAttribute('class', 'galeria__img');
+		let h3 = document.createElement('h3');
+		h3.setAttribute('class', 'galeria__titulo');
+		h3.textContent = `Porcelanato ${porc.nombre}`;
+		let parr = document.createElement('p');
+		parr.setAttribute('class', 'galeria__codigo');
+		parr.textContent = `Codigo: ${porc.codigo}`;
+		let div = document.createElement('div');
+		div.setAttribute('class', `Codigo`);
+		div.appendChild(img);
+		div.appendChild(h3);
+		div.appendChild(parr);
+		galeria.appendChild(div);
+	});
+}
 function ascendente(a, b) {
 	return a.codigo - b.codigo;
 }
@@ -132,7 +151,8 @@ if (orden == 1) {
 		console.log(`${producto.nombre} ${producto.medida}: $${producto.precio}`);
 	}
 }
-
+// creo una lista de productos de mi array
+imprimirPorc();
 // Agrego un evento
 
 let btnPre = document.getElementById('btnPre');

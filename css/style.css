@@ -49,9 +49,21 @@ body {
 	z-index: -1;
 	opacity: 0.5;
 }
+/* etilos de la galeria generada por js-------------------------- */
+.galeria {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	padding: 20px;
+	flex-wrap: nowrap;
+	margin-top: 70px;
+}
+.galeria__img {
+	width: 250px;
+	height: 250px;
+}
 .info {
 	width: 40%;
-	/* margin-top: 10px; */
 	padding: 10px 40px;
 }
 .info__nombre {
@@ -63,7 +75,7 @@ body {
 	justify-content: center;
 	background-color: rgb(247, 242, 229);
 	padding: 20px;
-	margin-top: 70px;
+	margin-top: 20px;
 }
 .datos__container {
 	display: flex;
@@ -93,11 +105,15 @@ body {
 	margin: 8px;
 }
 /* presupesto */
+.presupuesto {
+	width: 60%;
+}
 .presupuesto__info {
-	width: 400px;
+	width: 500px;
 	font-size: 20px;
 	font-weight: 500;
 	padding: 10px;
+	margin: 20px 0;
 }
 .presupuesto__img {
 	width: 400px;
