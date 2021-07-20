@@ -13,16 +13,12 @@
 	</head>
 	<body>
 		<header class="header">
-			<a class="header__enlace header__enlace--rad-right" href="index.html"
+			<a class="header__enlace" href="index.html"
 				><img src="imagenes/2.jpg" alt="logo de Modern Home Allentiac" class="header__logo"
 			/></a>
-			<a href="calculador.html" class="header__enlace">Calculador</a>
-			<a href="presupuesto.html" class="header__enlace header__enlace--rad-left"
-				>Carrito de Presupuestos</a
-			>
+			<a href="calculador.html" class="header__enlace header__enlace--center">Calculador</a>
+			<!-- <a href="presupuesto.html" class="header__enlace">Carrito de Presupuestos</a> -->
 		</header>
-
-		<section id="galeria" class="galeria"></section>
 		<section class="datos">
 			<div class="datos__container">
 				<div class="datos__box">
@@ -92,15 +88,16 @@
 		<section class="presupuesto" id="presupuesto"></section>
 
 		<!-- --------------------------------------------------- -->
-		<script src="./app.js"></script>
+		<script src="./js/appCalc.js"></script>
 
-		<!-- PROBANDO EL LECTOR QR -->
-		<script src="./app2.js"></script>
+		<!-- LECTOR QR -->
+		<script src="./js/lectorQR.js"></script>
 		<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
-		<script
+		<!-- jquery -->
+		<!-- <script
 			src="https://code.jquery.com/jquery-3.6.0.js"
 			integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
 			crossorigin="anonymous"
-		></script>
+		></script> -->
 	</body>
 </html>
