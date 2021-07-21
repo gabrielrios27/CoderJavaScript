@@ -96,7 +96,7 @@ function mostrar() {
 		img.setAttribute('src', `imagenes/${modelo.imagen}`);
 		img.setAttribute('class', 'presupuesto__img');
 		// cambio la seccion info
-		document.getElementById('porcNombre').textContent = ` ${modelo.nombre}`;
+		document.getElementById('porcNombre').textContent = `Porcelanato ${modelo.nombre}`;
 		document.getElementById('porcMedida').textContent = `Medida: ${modelo.medida}`;
 		document.getElementById(
 			'porcCaja'
@@ -104,8 +104,31 @@ function mostrar() {
 		document.getElementById('porcPrecio').textContent = `Precio: $${modelo.precio}`;
 	}
 }
-
+function ingresaCod(value) {
+	for (modelo of porcelanatos) {
+		if (modelo.codigo == value) {
+			let presupuesto = document.getElementById('presupuesto');
+			let img = document.createElement('img');
+			presupuesto.appendChild(img);
+			img.setAttribute('src', `imagenes/${modelo.imagen}`);
+			img.setAttribute('class', 'presupuesto__img');
+			// cambio la seccion info
+			document.getElementById('porcNombre').textContent = `Porcelanato ${modelo.nombre}`;
+			document.getElementById('porcMedida').textContent = `Medida: ${modelo.medida}`;
+			document.getElementById(
+				'porcCaja'
+			).textContent = `Metros cuadrados por caja: ${modelo.caja} m2`;
+			document.getElementById('porcPrecio').textContent = `Precio: $${modelo.precio}`;
+			console.log(`este es el cambio, seleccion: ${modelo.nombre}`);
+		}
+	}
+}
+function cambio() {
+	let inputMod = document.getElementById('codigo');
+	inputMod.addEventListener('change', ingresaCod(inputMod.value));
+}
 // Agrego un evento
+setInterval(cambio, 200000000);
 
 let btnPre = document.getElementById('btnPre');
 btnPre.addEventListener('click', mostrar);
