@@ -127,8 +127,22 @@ function cambio() {
 	let inputMod = document.getElementById('codigo');
 	inputMod.addEventListener('change', ingresaCod(inputMod.value));
 }
-// Agrego un evento
+// observo el input para tomar cualquier cambio en tiempo real para mostrar el porcelanato elegido
 setInterval(cambio, 200000000);
+// calculo el presupuesto cuando se le da click al boton calcular
 
 let btnPre = document.getElementById('btnPre');
 btnPre.addEventListener('click', mostrar);
+
+// $('body').append(`<input type="text"   class="inputsClass">
+//                    <input type="number" class="inputsClass">
+//                    <select class="inputsClass">
+//                         <option value="1" selected >ID 1</option>
+//                         <option value="2">ID 2</option>
+//                         <option value="3">ID 3</option>
+//                     </select>`);
+// //Asociamos el evento change a todos los inputs
+// $('.inputsClass').change(function () {
+// 	// console.log(e.target.value);
+// 	console.log(this.value);
+// });
