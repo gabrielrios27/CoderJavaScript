@@ -17,7 +17,6 @@
 				><img src="imagenes/2.jpg" alt="logo de Modern Home Allentiac" class="header__logo"
 			/></a>
 			<a href="calculador.html" class="header__enlace header__enlace--center">Calculador</a>
-			<!-- <a href="presupuesto.html" class="header__enlace">Carrito de Presupuestos</a> -->
 		</header>
 		<section class="datos">
 			<div class="datos__container">
@@ -54,36 +53,15 @@
 					>
 					<input type="text" name="cantidad" id="cantidad" class="datos__input" />
 				</div>
-				<!-- <div class="datos__box">
-					<input type="checkbox" name="desperdicio" id="desperdicio" class="datos__checkbox" />
-					<label for="desperdicio" class="datos__label"
-						>Agregar un 10% de piso para el desperdicio en los cortes</label
-					>
-				</div>
-				<div class="datos__box">
-					<input type="checkbox" name="zocalos" id="zocalos" class="datos__checkbox" />
-					<label for="zocalos" class="datos__label"
-						>Agregar cantidad de piso extra para zocalos</label
-					>
-				</div>
-				<div class="datos__box">
-					<input type="checkbox" name="pegamento" id="pegamento" class="datos__checkbox" />
-					<label for="pegamento" class="datos__label">Agregar pegamento Full-mix</label>
-				</div>
-				<div class="datos__box">
-					<input type="checkbox" name="pastina" id="pastina" class="datos__checkbox" />
-					<label for="pastina" class="datos__label">Agregar pastina Full-mix</label>
-				</div> -->
-				<button class="datos__button" id="btnPre">Agregar a presupuesto</button>
+
+				<button class="datos__button" id="btnPre">Calcular</button>
 			</div>
 		</section>
 		<section class="info">
-			<h1 class="info__nombre">Porcelanato <span id="porcNombre"></span></h1>
-			<!-- <h4 class="info__detalle">Material:</h4> -->
-			<!-- <h4 class="info__detalle">Tipo:</h4> -->
-			<h4 class="info__detalle" id="porcMedida">Medida:</h4>
-			<h4 class="info__detalle" id="porcCaja">Caja</h4>
-			<h4 class="info__detalle" id="porcPrecio">Precio:</h4>
+			<h1 class="info__nombre"><span id="porcNombre"></span></h1>
+			<h4 class="info__detalle" id="porcMedida"></h4>
+			<h4 class="info__detalle" id="porcCaja"></h4>
+			<h4 class="info__detalle" id="porcPrecio"></h4>
 		</section>
 		<section class="presupuesto" id="presupuesto"></section>
 
@@ -93,11 +71,5 @@
 		<!-- LECTOR QR -->
 		<script src="./js/lectorQR.js"></script>
 		<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
-		<!-- jquery -->
-		<!-- <script
-			src="https://code.jquery.com/jquery-3.6.0.js"
-			integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-			crossorigin="anonymous"
-		></script> -->
 	</body>
 </html>

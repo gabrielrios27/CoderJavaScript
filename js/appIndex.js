@@ -48,7 +48,7 @@ localStorage.setItem('porcelanatos', porcJson);
 // funciones
 function imprimirPorc() {
 	porcelanatos.forEach((porc) => {
-		let galeria = document.getElementById('galeria');
+		let galeria = $('#galeria');
 		let img = document.createElement('img');
 		img.setAttribute('src', `imagenes/${porc.imagen}`);
 		img.setAttribute('class', 'galeria__img');
@@ -116,6 +116,3 @@ for (let i = 0; i < imgBox.length; i++) {
 		console.log(`se le dio click a ${eleccion}`);
 	});
 }
-
-// let btnEleccion = document.getElementById('btnPre');
-// btnPre.addEventListener('click', mostrar);

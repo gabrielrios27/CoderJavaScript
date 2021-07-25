@@ -96,7 +96,7 @@ function mostrar() {
 		img.setAttribute('src', `imagenes/${modelo.imagen}`);
 		img.setAttribute('class', 'presupuesto__img');
 		// cambio la seccion info
-		document.getElementById('porcNombre').textContent = ` ${modelo.nombre}`;
+		document.getElementById('porcNombre').textContent = `Porcelanato ${modelo.nombre}`;
 		document.getElementById('porcMedida').textContent = `Medida: ${modelo.medida}`;
 		document.getElementById(
 			'porcCaja'
