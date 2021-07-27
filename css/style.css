@@ -173,6 +173,12 @@ body {
 	padding: 5px;
 	/* font-weight: 600; */
 }
+.datos__alerta {
+	color: red;
+	font-size: 12px;
+	max-width: 350px;
+	padding: 5px;
+}
 .datos__input {
 	margin: 5px;
 }
