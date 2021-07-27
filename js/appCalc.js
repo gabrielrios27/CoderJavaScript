@@ -55,27 +55,62 @@ function mostrar() {
 			modelo = value;
 			i++;
 			verificador1 = true;
-			console.log(modelo);
+			console.log(verificador1);
 		}
 	}
 	if (i == 0) {
 		verificador1 = false;
+		console.log(verificador1);
 	}
-	console.log(verificador1);
-	$('.datos__alerta').remove();
+
 	if (!verificador1) {
-		$('.datos__box:first-child').append(
-			`<p class="datos__alerta">Usted a ingresado un numero de modelo incorrecto.</p>`
+		$('#alertaMod').animate(
+			{
+				height: '24px',
+				opacity: '1',
+			},
+			'fast',
+			function () {
+				$('#codigo').css({ color: 'red' });
+			}
 		);
 		verificador1 = false;
+	} else {
+		$('#alertaMod').animate(
+			{
+				height: '0px',
+				opacity: '0',
+			},
+			'fast',
+			function () {
+				$('#codigo').css({ color: 'black' });
+			}
+		);
 	}
-	console.log(verificador1);
+
 	if (metrosCuadrados <= 0 || !metrosCuadrados) {
-		$('.datos__box:last').append(
-			`<p class="datos__alerta">Usted a ingresado una cantidad de metros cuadrado incorrecta.</p>`
+		$('#alertaCant').animate(
+			{
+				height: '44px',
+				opacity: '1',
+			},
+			'fast',
+			function () {
+				$('#cantidad').css({ color: 'red' });
+			}
 		);
 		verificador2 = false;
 	} else {
+		$('#alertaCant').animate(
+			{
+				height: '0px',
+				opacity: '0',
+			},
+			'fast',
+			function () {
+				$('#cantidad').css({ color: 'black' });
+			}
+		);
 		verificador2 = true;
 	}
 	if (verificador1 && verificador2) {
@@ -146,6 +181,12 @@ function cambio() {
 		codViejo = inputMod.val();
 	}
 }
+$('.datos__box:first-child').append(
+	`<p class="datos__alerta" id="alertaMod">Usted a ingresado un numero de modelo incorrecto.</p>`
+);
+$('.datos__box:last').append(
+	`<p class="datos__alerta" id="alertaCant">Usted a ingresado una cantidad de metros cuadrado incorrecta.</p>`
+);
 // observo el input para tomar cualquier cambio en tiempo real para mostrar el porcelanato elegido
 setInterval(cambio, 300);
 // calculo el presupuesto cuando se le da click al boton calcular
