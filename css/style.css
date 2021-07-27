@@ -176,9 +176,9 @@ body {
 .datos__alerta {
 	display: inline-block;
 	color: red;
-	font-size: 12px;
+	font-size: 0;
 	max-width: 350px;
-	padding: 5px;
+	padding: 0;
 	height: 0;
 	opacity: 0;
 }
@@ -188,6 +188,7 @@ body {
 .datos__button {
 	padding: 2px 8px;
 	margin: 8px;
+	cursor: pointer;
 }
 /* presupesto */
 .presupuesto {

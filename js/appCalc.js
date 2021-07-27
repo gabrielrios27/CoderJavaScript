@@ -13,7 +13,7 @@ console.log(porcelanatos);
 // cargo la eleccion del porcelanato desde el index
 const eleccion = JSON.parse(localStorage.getItem('eleccion'));
 console.log(eleccion);
-// si eleccion no es null cargo en el imput
+// si eleccion no es 0 cargo en el imput
 if (eleccion !== 0) {
 	$('#codigo').val(eleccion);
 }
@@ -66,8 +66,10 @@ function mostrar() {
 	if (!verificador1) {
 		$('#alertaMod').animate(
 			{
+				'font-size': '12px',
 				height: '24px',
 				opacity: '1',
+				padding: '5px',
 			},
 			'fast',
 			function () {
@@ -78,8 +80,10 @@ function mostrar() {
 	} else {
 		$('#alertaMod').animate(
 			{
+				'font-size': '0px',
 				height: '0px',
 				opacity: '0',
+				padding: '0',
 			},
 			'fast',
 			function () {
@@ -91,8 +95,10 @@ function mostrar() {
 	if (metrosCuadrados <= 0 || !metrosCuadrados) {
 		$('#alertaCant').animate(
 			{
+				'font-size': '12px',
 				height: '44px',
 				opacity: '1',
+				padding: '5px',
 			},
 			'fast',
 			function () {
@@ -103,8 +109,10 @@ function mostrar() {
 	} else {
 		$('#alertaCant').animate(
 			{
+				'font-size': '0px',
 				height: '0px',
 				opacity: '0',
+				padding: '0',
 			},
 			'fast',
 			function () {
@@ -150,8 +158,10 @@ function mostrar() {
 	}
 }
 function ingresaCod(value) {
+	let i = 0;
 	for (modelo of porcelanatos) {
 		if (modelo.codigo == value) {
+			i++;
 			let presupuesto = $('.presupuesto');
 			$('.presupuesto__container').remove();
 			presupuesto.append(`
@@ -171,6 +181,9 @@ function ingresaCod(value) {
 			</div>
 			`);
 		}
+	}
+	if (i == 0) {
+		$('.presupuesto__container').remove();
 	}
 }
 function cambio() {
