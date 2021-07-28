@@ -96,7 +96,7 @@ function mostrar() {
 				<p class="presupuesto__info">Por ${cantPegamentopastina} bolsas de pegamento de 30kg el precio es de: $${precioPeg}</p>
 				<p class="presupuesto__info">Por ${cantPegamentopastina} bolsas de pastina de 1kg,  el precio es de: $${precioPast}</p>
 				<p class="presupuesto__info">El precio total es de : $${precioTotal}</p>
-				<img src="imagenes/${modelo.imagen}" class="presupuesto__img" />
+				<img src="imagenes/${modelo.imagen}" class="info__img" />
 			</div>
 		`);
 		// cambio la seccion info
@@ -121,7 +121,7 @@ function ingresaCod(value) {
 			$('.presupuesto__container').remove();
 			presupuesto.append(`
 				<div class="presupuesto__container">		
-					<img src="imagenes/${modelo.imagen}" class="presupuesto__img" />
+					<img src="imagenes/${modelo.imagen}" class="info__img" />
 				</div>
 			`);
 			// cambio la seccion info

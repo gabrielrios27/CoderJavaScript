@@ -32,13 +32,13 @@ function precioPorcelanato(cantidad) {
 function cantidadPegamentoPastina(cantidad) {
 	return Math.ceil(cantidad / 4);
 }
-let precioTotalPegamento = (precioPegamento, cantPegamentopastina) => {
-	let pegamentoFinal = precioPegamento * cantPegamentopastina;
+let precioTotalPegamento = (precioPegamento, cantPegamentoPastina) => {
+	let pegamentoFinal = precioPegamento * cantPegamentoPastina;
 	console.log(`El precio total del pegamento es de $${pegamentoFinal}`);
 	return pegamentoFinal;
 };
-let precioTotalPastina = (precioPastina, cantPegamentopastina) => {
-	let pastinaFinal = precioPastina * cantPegamentopastina;
+let precioTotalPastina = (precioPastina, cantPegamentoPastina) => {
+	let pastinaFinal = precioPastina * cantPegamentoPastina;
 	console.log(`El precio total de la pastina es de $${pastinaFinal}`);
 	return pastinaFinal;
 };
@@ -122,26 +122,32 @@ function mostrar() {
 		verificador2 = true;
 	}
 	if (verificador1 && verificador2) {
+		modelo.cantidad = metrosCuadrados;
+		const modYCant1 = JSON.parse(localStorage.getItem('modYCant'));
+		console.log(modYCant1);
+		if (modYCant1 == null) {
+			const modYCant = [];
+			modYCant.push(modelo);
+			localStorage.setItem('modYCant', JSON.stringify(modYCant));
+			console.log(modYCant);
+		} else {
+			modYCant1.push(modelo);
+			localStorage.setItem('modYCant', JSON.stringify(modYCant1));
+			console.log(modYCant1);
+		}
+
 		let cantidadReal = cantidad(metrosCuadrados).toFixed(2);
-		let preciopiso = precioPorcelanato(cantidadReal);
-		let cantPegamentopastina = cantidadPegamentoPastina(cantidadReal);
-		let precioPeg = precioTotalPegamento(precioPegamento, cantPegamentopastina);
-		let precioPast = precioTotalPastina(precioPastina, cantPegamentopastina);
-		let precioTotal = precioFinal(preciopiso, precioPeg, precioPast);
-		// modifico el DOM
+		let preciopiso = precioPorcelanato(cantidadReal).toFixed(2);
 		let presupuesto = $('.presupuesto');
 		$('.presupuesto__container').remove();
 		presupuesto.append(`
-			<div class="presupuesto__container">		
+			<div class="presupuesto__container" id="pre-calculo">		
 				<p class="presupuesto__info">
 				Por ${cantidadReal}m2 (${cantidadDeCajas} cajas) de porcelanato ${modelo.nombre} ${modelo.medida} el precio es de: $${preciopiso}
 				</p>
-				<p class="presupuesto__info">Por ${cantPegamentopastina} bolsas de pegamento de 30kg el precio es de: $${precioPeg}</p>
-				<p class="presupuesto__info">Por ${cantPegamentopastina} bolsas de pastina de 1kg,  el precio es de: $${precioPast}</p>
-				<p class="presupuesto__info">El precio total es de : $${precioTotal}</p>
-				<img src="imagenes/${modelo.imagen}" class="presupuesto__img" />
 			</div>
 		`);
+
 		// cambio la seccion info
 		let info = $('.info');
 		info.append('');
@@ -151,7 +157,28 @@ function mostrar() {
 			<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
 			<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
 			<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio}</h4>
+			<img src="imagenes/${modelo.imagen}" class="info__img" />
 		</div>
+		`);
+		let cantPegamentoPastina = cantidadPegamentoPastina(cantidadReal);
+		let precioPeg = 0;
+		let precioPast = 0;
+		if ($('#checkPegamento').prop('checked')) {
+			precioPeg = precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2);
+			$('#pre-calculo').append(`
+			<p class="presupuesto__info">Por ${cantPegamentoPastina} bolsas de pegamento de 30kg el precio es de: $${precioPeg}</p>
+			`);
+		}
+		if ($('#checkPastina').prop('checked')) {
+			precioPast = precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2);
+			$('#pre-calculo').append(`
+			<p class="presupuesto__info">Por ${cantPegamentoPastina} bolsas de pastina de 1kg,  el precio es de: $${precioPast}</p>
+			`);
+		}
+
+		let precioTotal = precioFinal(preciopiso, precioPeg, precioPast);
+		$('#pre-calculo').append(`
+		<p class="presupuesto__info">El precio total es de : $${precioTotal}</p>	
 		`);
 	} else {
 		$('.presupuesto__container').remove();
@@ -166,7 +193,7 @@ function ingresaCod(value) {
 			$('.presupuesto__container').remove();
 			presupuesto.append(`
 				<div class="presupuesto__container">		
-					<img src="imagenes/${modelo.imagen}" class="presupuesto__img" />
+					<img src="imagenes/${modelo.imagen}" class="info__img" />
 				</div>
 			`);
 			// cambio la seccion info

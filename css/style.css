@@ -145,6 +145,11 @@ body {
 .info__nombre {
 	margin: 20px 0px;
 }
+.info__img {
+	width: 100%;
+	margin-top: 10px;
+}
+
 .datos {
 	width: 100%;
 	display: flex;
@@ -201,9 +206,7 @@ body {
 	font-weight: 500;
 	padding: 10px;
 }
-.presupuesto__img {
-	width: 400px;
-}
+
 /* lector qr----------------------------------- */
 
 .lectorQR {

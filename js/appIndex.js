@@ -11,6 +11,7 @@ class producto {
 		this.caja = caja;
 		this.precio = precio;
 		this.imagen = imagen;
+		this.cantidad = 0;
 	}
 }
 
