@@ -12,6 +12,8 @@ class producto {
 		this.precio = precio;
 		this.imagen = imagen;
 		this.cantidad = 0;
+		this.pegamento = false;
+		this.pastina = false;
 	}
 }
 

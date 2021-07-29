@@ -127,6 +127,57 @@ function mostrar() {
 	}
 	if (verificador1 && verificador2) {
 		modelo.cantidad = metrosCuadrados;
+		// calculo el presupuesto
+		let cantidadReal = Number(cantidad(modelo.cantidad).toFixed(2));
+		let preciopiso = Number(precioPorcelanato(cantidadReal).toFixed(2));
+		let presupuesto = $('.presupuesto');
+		$('.presupuesto__container').remove();
+		presupuesto.append(`
+			<div class="presupuesto__container" id="pre-calculo">		
+				<p class="presupuesto__info">
+				Por ${cantidadReal.toLocaleString()}m2 (${cantidadDeCajas.toLocaleString()} cajas) de porcelanato ${
+			modelo.nombre
+		} ${modelo.medida} el precio es de: $${preciopiso.toLocaleString()}
+				</p>
+			</div>
+		`);
+		// check y calculo de pastina y pegamento
+		let cantPegamentoPastina = cantidadPegamentoPastina(cantidadReal);
+		let precioPeg = 0;
+		let precioPast = 0;
+
+		if ($('#checkPegamento').prop('checked')) {
+			precioPeg = Number(precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2));
+			$('#pre-calculo').append(`
+			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString()} bolsas de pegamento de 30kg el precio es de: $${precioPeg.toLocaleString()}</p>
+			`);
+			modelo.pegamento = true;
+		}
+		if ($('#checkPastina').prop('checked')) {
+			precioPast = Number(precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2));
+			$('#pre-calculo').append(`
+			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString()} bolsas de pastina de 1kg,  el precio es de: $${precioPast.toLocaleString()}</p>
+			`);
+			modelo.pastina = true;
+		}
+		// calculo del precio total
+		let precioTotal = precioFinal(preciopiso, precioPeg, precioPast);
+		$('#pre-calculo').append(`
+		<p class="presupuesto__info">El precio total es de : $${precioTotal.toLocaleString()}</p>	
+		`);
+		// cambio la seccion info
+		let info = $('.info');
+		info.append('');
+		info.append(`
+		<div class="presupuesto__container">
+			<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
+			<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
+			<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
+			<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio.toLocaleString()}</h4>
+			<img src="imagenes/${modelo.imagen}" class="info__img" />
+		</div>
+		`);
+		// cargo el producto elegido al arreglo en localStorage para el carrito
 		const modYCant1 = JSON.parse(localStorage.getItem('modYCant'));
 		console.log(modYCant1);
 		if (modYCant1 == null) {
@@ -139,51 +190,6 @@ function mostrar() {
 			localStorage.setItem('modYCant', JSON.stringify(modYCant1));
 			console.log(modYCant1);
 		}
-
-		let cantidadReal = cantidad(metrosCuadrados).toFixed(2);
-		let preciopiso = precioPorcelanato(cantidadReal).toFixed(2);
-		let presupuesto = $('.presupuesto');
-		$('.presupuesto__container').remove();
-		presupuesto.append(`
-			<div class="presupuesto__container" id="pre-calculo">		
-				<p class="presupuesto__info">
-				Por ${cantidadReal}m2 (${cantidadDeCajas} cajas) de porcelanato ${modelo.nombre} ${modelo.medida} el precio es de: $${preciopiso}
-				</p>
-			</div>
-		`);
-
-		// cambio la seccion info
-		let info = $('.info');
-		info.append('');
-		info.append(`
-		<div class="presupuesto__container">
-			<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
-			<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
-			<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
-			<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio}</h4>
-			<img src="imagenes/${modelo.imagen}" class="info__img" />
-		</div>
-		`);
-		let cantPegamentoPastina = cantidadPegamentoPastina(cantidadReal);
-		let precioPeg = 0;
-		let precioPast = 0;
-		if ($('#checkPegamento').prop('checked')) {
-			precioPeg = precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2);
-			$('#pre-calculo').append(`
-			<p class="presupuesto__info">Por ${cantPegamentoPastina} bolsas de pegamento de 30kg el precio es de: $${precioPeg}</p>
-			`);
-		}
-		if ($('#checkPastina').prop('checked')) {
-			precioPast = precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2);
-			$('#pre-calculo').append(`
-			<p class="presupuesto__info">Por ${cantPegamentoPastina} bolsas de pastina de 1kg,  el precio es de: $${precioPast}</p>
-			`);
-		}
-
-		let precioTotal = precioFinal(preciopiso, precioPeg, precioPast);
-		$('#pre-calculo').append(`
-		<p class="presupuesto__info">El precio total es de : $${precioTotal}</p>	
-		`);
 	} else {
 		$('.presupuesto__container').remove();
 	}
@@ -208,7 +214,7 @@ function ingresaCod(value) {
 				<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
 				<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
 				<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
-				<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio}</h4>
+				<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio.toLocaleString()}</h4>
 			</div>
 			`);
 		}
