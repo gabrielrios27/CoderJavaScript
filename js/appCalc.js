@@ -135,9 +135,11 @@ function mostrar() {
 		presupuesto.append(`
 			<div class="presupuesto__container" id="pre-calculo">		
 				<p class="presupuesto__info">
-				Por ${cantidadReal.toLocaleString()}m2 (${cantidadDeCajas.toLocaleString()} cajas) de porcelanato ${
-			modelo.nombre
-		} ${modelo.medida} el precio es de: $${preciopiso.toLocaleString()}
+				Por ${cantidadReal.toLocaleString(
+					'de-DE'
+				)}m2 (${cantidadDeCajas.toLocaleString()} cajas) de porcelanato ${modelo.nombre} ${
+			modelo.medida
+		} el precio es de: $${preciopiso.toLocaleString('de-DE')}
 				</p>
 			</div>
 		`);
@@ -149,21 +151,25 @@ function mostrar() {
 		if ($('#checkPegamento').prop('checked')) {
 			precioPeg = Number(precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2));
 			$('#pre-calculo').append(`
-			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString()} bolsas de pegamento de 30kg el precio es de: $${precioPeg.toLocaleString()}</p>
+			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString(
+				'de-DE'
+			)} bolsas de pegamento de 30kg el precio es de: $${precioPeg.toLocaleString('de-DE')}</p>
 			`);
 			modelo.pegamento = true;
 		}
 		if ($('#checkPastina').prop('checked')) {
 			precioPast = Number(precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2));
 			$('#pre-calculo').append(`
-			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString()} bolsas de pastina de 1kg,  el precio es de: $${precioPast.toLocaleString()}</p>
+			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString(
+				'de-DE'
+			)} bolsas de pastina de 1kg,  el precio es de: $${precioPast.toLocaleString('de-DE')}</p>
 			`);
 			modelo.pastina = true;
 		}
 		// calculo del precio total
 		let precioTotal = precioFinal(preciopiso, precioPeg, precioPast);
 		$('#pre-calculo').append(`
-		<p class="presupuesto__info">El precio total es de : $${precioTotal.toLocaleString()}</p>	
+		<p class="presupuesto__info">El precio total es de : $${precioTotal.toLocaleString('de-DE')}</p>	
 		`);
 		// cambio la seccion info
 		let info = $('.info');
@@ -173,7 +179,9 @@ function mostrar() {
 			<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
 			<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
 			<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
-			<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio.toLocaleString()}</h4>
+			<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio.toLocaleString(
+				'de-DE'
+			)}</h4>
 			<img src="imagenes/${modelo.imagen}" class="info__img" />
 		</div>
 		`);
@@ -214,7 +222,9 @@ function ingresaCod(value) {
 				<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
 				<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
 				<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
-				<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio.toLocaleString()}</h4>
+				<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio.toLocaleString(
+					'de-DE'
+				)}</h4>
 			</div>
 			`);
 		}

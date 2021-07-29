@@ -178,10 +178,10 @@ body {
 	padding: 5px;
 	/* font-weight: 600; */
 }
-.datos__cant{
+.datos__cant {
 	position: relative;
 }
-.flecha{
+.flecha {
 	width: 30px;
 	position: absolute;
 	top: 7px;
@@ -199,6 +199,9 @@ body {
 }
 .datos__input {
 	margin: 5px;
+}
+.datos__check {
+	padding-left: 10px;
 }
 .datos__button {
 	padding: 2px 8px;
@@ -246,17 +249,17 @@ label {
 }
 /* estilos del presupuesto--------------------- */
 
-.presu__img{
+.presu__img {
 	width: 150px;
 	padding: 20px;
 }
-.presunuev{
+.presunuev {
 	margin-top: 80px;
 	width: 100%;
 }
-.presunuev__info{
+.presunuev__info {
 	width: 100%;
 }
-.presu__container{
+.presu__container {
 	border: solid 1px black;
 }
