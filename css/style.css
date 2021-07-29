@@ -164,7 +164,7 @@ body {
 	justify-content: center;
 	align-items: flex-start;
 	background-color: rgb(250, 225, 189);
-	padding: 20px;
+	padding: 20px 30px;
 }
 .datos__box {
 	display: flex;
@@ -177,6 +177,16 @@ body {
 	max-width: 350px;
 	padding: 5px;
 	/* font-weight: 600; */
+}
+.datos__cant{
+	position: relative;
+}
+.flecha{
+	width: 30px;
+	position: absolute;
+	top: 7px;
+	left: -29px;
+	display: none;
 }
 .datos__alerta {
 	display: inline-block;
@@ -233,4 +243,20 @@ label {
 	width: 1px;
 	height: 1px;
 	opacity: 0;
+}
+/* estilos del presupuesto--------------------- */
+
+.presu__img{
+	width: 150px;
+	padding: 20px;
+}
+.presunuev{
+	margin-top: 80px;
+	width: 100%;
+}
+.presunuev__info{
+	width: 100%;
+}
+.presu__container{
+	border: solid 1px black;
 }

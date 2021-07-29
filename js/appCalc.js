@@ -74,6 +74,7 @@ function mostrar() {
 			'fast',
 			function () {
 				$('#codigo').css({ color: 'red' });
+				$('#flecha1').fadeIn();
 			}
 		);
 		verificador1 = false;
@@ -88,6 +89,7 @@ function mostrar() {
 			'fast',
 			function () {
 				$('#codigo').css({ color: 'black' });
+				$('#flecha1').fadeOut();
 			}
 		);
 	}
@@ -103,6 +105,7 @@ function mostrar() {
 			'fast',
 			function () {
 				$('#cantidad').css({ color: 'red' });
+				$('#flecha2').fadeIn('fast');
 			}
 		);
 		verificador2 = false;
@@ -117,6 +120,7 @@ function mostrar() {
 			'fast',
 			function () {
 				$('#cantidad').css({ color: 'black' });
+				$('#flecha2').fadeOut('fast');
 			}
 		);
 		verificador2 = true;
