@@ -1,0 +1,134 @@
+[
+ {
+    "codigo":1,
+    "nombre":"Carrara",
+    "medida":"60x120",
+    "caja":1.44,
+    "precio":5000,
+    "imagen":"carrara.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":2,
+    "nombre":"Onix",
+    "medida":"60x60",
+    "caja":1.44,
+    "precio":4200,
+    "imagen":"onix.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":3,
+    "nombre":"Bauhaus",
+    "medida":"58x58",
+    "caja":1.35,
+    "precio":2800,
+    "imagen":"bauhaus.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":4,
+    "nombre":"Linen",
+    "medida":"60x60",
+    "caja":1.44,
+    "precio":2900,
+    "imagen":"linen.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":5,
+    "nombre":"Artec",
+    "medida":"60x60",
+    "caja":1.44,
+    "precio":2700,
+    "imagen":"artec.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":6,
+    "nombre":"Calacata",
+    "medida":"60x60",
+    "caja":1.44,
+    "precio":4300,
+    "imagen":"calacata.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":7,
+    "nombre":"Amur",
+    "medida":"60x60",
+    "caja":1.44,
+    "precio":3750,
+    "imagen":"amur.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":8,
+    "nombre":"Porfido",
+    "medida":"58x58",
+    "caja":1.35,
+    "precio":3200,
+    "imagen":"porfido.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":9,
+    "nombre":"Oxidum",
+    "medida":"60x60",
+    "caja":1.44,
+    "precio":4200,
+    "imagen":"oxidum.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":10,
+    "nombre":"Cleveland",
+    "medida":"23x120",
+    "caja":1.12,
+    "precio":4500,
+    "imagen":"cleveland.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":11,
+    "nombre":"Muse",
+    "medida":"50x100",
+    "caja":1,
+    "precio":4700,
+    "imagen":"muse.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":12,
+    "nombre":"Vermont",
+    "medida":"15x90",
+    "caja":0.95,
+    "precio":4400,
+    "imagen":"vermont.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+ }
+]

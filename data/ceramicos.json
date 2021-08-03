@@ -1,0 +1,69 @@
+[
+ {
+    "codigo":13,
+    "nombre":"Arizona Claro",
+    "medida":"36x36",
+    "caja":2.68,
+    "precio":1100,
+    "imagen":"arizonaclaro.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":14,
+    "nombre":"Portland gris",
+    "medida":"51x51",
+    "caja":2.08,
+    "precio":1300,
+    "imagen":"portlandgris.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":15,
+    "nombre":"Porfido rojo",
+    "medida":"51x51",
+    "caja":2.08,
+    "precio":1300,
+    "imagen":"porfidorojo.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":16,
+    "nombre":"Barcelos rojo",
+    "medida":"36x36",
+    "caja":2.68,
+    "precio":990,
+    "imagen":"barcelosrojo.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":17,
+    "nombre":"Legno",
+    "medida":"30x45",
+    "caja":1.35,
+    "precio":1100,
+    "imagen":"legno.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+},
+{
+    "codigo":18,
+    "nombre":"Cadiz gris",
+    "medida":"36x36",
+    "caja":2.68,
+    "precio":990,
+    "imagen":"cadizgris.jpg",
+    "cantidad":0,
+    "pegamento":false,
+    "pastina":false
+}
+
+]

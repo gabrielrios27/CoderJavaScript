@@ -112,7 +112,20 @@ body {
 	flex-wrap: wrap;
 	margin-top: 70px;
 }
+.boton{
+	width: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	margin: 10px 10px 30px;
+}
+
+#btn__ceram{
+	padding: 3px 5px;
+	cursor: pointer;
+}
 .galeria__container {
+	width: 290px;
 	padding: 20px;
 	margin: 10px;
 	background-color: rgb(238, 238, 238);
@@ -138,12 +151,20 @@ body {
 	background-color: rgb(250, 225, 189);
 	text-align: center;
 }
+.galeria__elegir--prox{
+	background-color: rgb(189, 208, 250);
+}
 .info {
 	width: 40%;
-	padding: 10px 40px;
+	padding: 20px 40px;
+	background-color: rgb(19, 19, 19);
+	color: rgb(245, 245, 245);
 }
 .info__nombre {
 	margin: 20px 0px;
+}
+.info__detalle {
+	padding: 5px;
 }
 .info__img {
 	width: 100%;
@@ -262,4 +283,6 @@ label {
 }
 .presu__container {
 	border: solid 1px black;
+	background-color: rgb(238, 238, 238);
+	margin-bottom: 15px;
 }

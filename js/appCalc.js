@@ -7,9 +7,16 @@ let modelo = '';
 let verificador1 = false;
 let verificador2 = true;
 let codViejo = 0;
+let porcelanatos=[];
+
+const dataPorc = "data/porcelanatos.json";
+
 // base de datos de los porcelanatos
-const porcelanatos = JSON.parse(localStorage.getItem('porcelanatos'));
-console.log(porcelanatos);
+$.getJSON(dataPorc, function (respuesta, estado) {
+	if(estado === "success"){
+		porcelanatos = respuesta;
+	}
+});
 // cargo la eleccion del porcelanato desde el index
 const eleccion = JSON.parse(localStorage.getItem('eleccion'));
 console.log(eleccion);
@@ -126,6 +133,7 @@ function mostrar() {
 		verificador2 = true;
 	}
 	if (verificador1 && verificador2) {
+		$('.info').css({'background-color': 'rgb(19, 19, 19)'})
 		modelo.cantidad = metrosCuadrados;
 		// calculo el presupuesto
 		let cantidadReal = Number(cantidad(modelo.cantidad).toFixed(2));
@@ -200,6 +208,7 @@ function mostrar() {
 		}
 	} else {
 		$('.presupuesto__container').remove();
+		$('.info').css({'background-color': 'rgb(252, 252, 252)'});
 	}
 }
 function ingresaCod(value) {
@@ -207,6 +216,7 @@ function ingresaCod(value) {
 	for (modelo of porcelanatos) {
 		if (modelo.codigo == value) {
 			i++;
+			$('.info').css({'background-color': 'rgb(19, 19, 19)'});
 			let presupuesto = $('.presupuesto');
 			$('.presupuesto__container').remove();
 			presupuesto.append(`
@@ -231,6 +241,7 @@ function ingresaCod(value) {
 	}
 	if (i == 0) {
 		$('.presupuesto__container').remove();
+		$('.info').css({'background-color': 'rgb(252, 252, 252)'});
 	}
 }
 function cambio() {
