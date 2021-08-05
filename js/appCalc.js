@@ -7,13 +7,13 @@ let modelo = '';
 let verificador1 = false;
 let verificador2 = true;
 let codViejo = 0;
-let porcelanatos=[];
+let porcelanatos = [];
 
-const dataPorc = "data/porcelanatos.json";
+const dataPorc = 'data/porcelanatos.json';
 
 // base de datos de los porcelanatos
 $.getJSON(dataPorc, function (respuesta, estado) {
-	if(estado === "success"){
+	if (estado === 'success') {
 		porcelanatos = respuesta;
 	}
 });
@@ -133,16 +133,16 @@ function mostrar() {
 		verificador2 = true;
 	}
 	if (verificador1 && verificador2) {
-		$('.info').css({'background-color': 'rgb(19, 19, 19)'})
+		$('.info').css({ 'background-color': 'rgb(19, 19, 19)' });
 		modelo.cantidad = metrosCuadrados;
 		// calculo el presupuesto
 		let cantidadReal = Number(cantidad(modelo.cantidad).toFixed(2));
 		let preciopiso = Number(precioPorcelanato(cantidadReal).toFixed(2));
-		let presupuesto = $('.presupuesto');
-		$('.presupuesto__container').remove();
+		let presupuesto = $('.calculo');
+		$('.calculo__container').remove();
 		presupuesto.append(`
-			<div class="presupuesto__container" id="pre-calculo">		
-				<p class="presupuesto__info">
+			<div class="calculo__container" id="calculo__container">		
+				<p class="calculo__info">
 				Por ${cantidadReal.toLocaleString(
 					'de-DE'
 				)}m2 (${cantidadDeCajas.toLocaleString()} cajas) de porcelanato ${modelo.nombre} ${
@@ -158,8 +158,8 @@ function mostrar() {
 
 		if ($('#checkPegamento').prop('checked')) {
 			precioPeg = Number(precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2));
-			$('#pre-calculo').append(`
-			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString(
+			$('#calculo__container').append(`
+			<p class="calculo__info">Por ${cantPegamentoPastina.toLocaleString(
 				'de-DE'
 			)} bolsas de pegamento de 30kg el precio es de: $${precioPeg.toLocaleString('de-DE')}</p>
 			`);
@@ -167,8 +167,8 @@ function mostrar() {
 		}
 		if ($('#checkPastina').prop('checked')) {
 			precioPast = Number(precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2));
-			$('#pre-calculo').append(`
-			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString(
+			$('#calculo__container').append(`
+			<p class="calculo__info">Por ${cantPegamentoPastina.toLocaleString(
 				'de-DE'
 			)} bolsas de pastina de 1kg,  el precio es de: $${precioPast.toLocaleString('de-DE')}</p>
 			`);
@@ -176,14 +176,14 @@ function mostrar() {
 		}
 		// calculo del precio total
 		let precioTotal = precioFinal(preciopiso, precioPeg, precioPast);
-		$('#pre-calculo').append(`
-		<p class="presupuesto__info">El precio total es de : $${precioTotal.toLocaleString('de-DE')}</p>	
+		$('#calculo__container').append(`
+		<p class="calculo__info">El precio total es de : $${precioTotal.toLocaleString('de-DE')}</p>	
 		`);
 		// cambio la seccion info
 		let info = $('.info');
-		info.append('');
+		$('.info__container').remove();
 		info.append(`
-		<div class="presupuesto__container">
+		<div class="info__container">
 			<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
 			<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
 			<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
@@ -207,8 +207,8 @@ function mostrar() {
 			console.log(modYCant1);
 		}
 	} else {
-		$('.presupuesto__container').remove();
-		$('.info').css({'background-color': 'rgb(252, 252, 252)'});
+		$('.info__container').remove();
+		$('.info').css({ 'background-color': 'rgb(252, 252, 252)' });
 	}
 }
 function ingresaCod(value) {
@@ -216,11 +216,11 @@ function ingresaCod(value) {
 	for (modelo of porcelanatos) {
 		if (modelo.codigo == value) {
 			i++;
-			$('.info').css({'background-color': 'rgb(19, 19, 19)'});
-			let presupuesto = $('.presupuesto');
-			$('.presupuesto__container').remove();
+			$('.info').css({ 'background-color': 'rgb(19, 19, 19)' });
+			let presupuesto = $('.calculo');
+			$('.calculo__container').remove();
 			presupuesto.append(`
-				<div class="presupuesto__container">		
+				<div class="calculo__container">		
 					<img src="imagenes/${modelo.imagen}" class="info__img" />
 				</div>
 			`);
@@ -228,7 +228,7 @@ function ingresaCod(value) {
 			let info = $('.info');
 			info.append('');
 			info.append(`
-			<div class="presupuesto__container">
+			<div class="info__container">
 				<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
 				<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
 				<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
@@ -240,8 +240,8 @@ function ingresaCod(value) {
 		}
 	}
 	if (i == 0) {
-		$('.presupuesto__container').remove();
-		$('.info').css({'background-color': 'rgb(252, 252, 252)'});
+		$('.info__container').remove();
+		$('.info').css({ 'background-color': 'rgb(252, 252, 252)' });
 	}
 }
 function cambio() {

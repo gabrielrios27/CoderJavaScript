@@ -51,8 +51,8 @@ function imprimirPresupuesto() {
 
 		let presupuesto = $('.presupuesto');
 		presupuesto.append(`
-			<div class="presupuesto__container presu__container" id="presu__container${i}">		
-				<p class="presupuesto__info presunuev__info">
+			<div class="presupuesto__container" id="presupuesto__container${i}">		
+				<p class="presupuesto__info">
 				Por ${cantidadReal.toLocaleString('de-DE')}m2 (${cantidadDeCajas.toLocaleString(
 			'de-DE'
 		)} cajas) de porcelanato ${modelo.nombre} ${
@@ -63,26 +63,24 @@ function imprimirPresupuesto() {
 		`);
 		if (modelo.pegamento) {
 			precioPeg = Number(precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2));
-			$(`#presu__container${i}`).append(`
-			<p class="presupuesto__info presunuev__info">Por ${cantPegamentoPastina.toLocaleString(
+			$(`#presupuesto__container${i}`).append(`
+			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString(
 				'de-DE'
 			)} bolsas de pegamento de 30kg el precio es de: $${precioPeg.toLocaleString('de-DE')}</p>
 			`);
 		}
 		if (modelo.pastina) {
 			precioPast = Number(precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2));
-			$(`#presu__container${i}`).append(`
-			<p class="presupuesto__info presunuev__info">Por ${cantPegamentoPastina.toLocaleString(
+			$(`#presupuesto__container${i}`).append(`
+			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString(
 				'de-DE'
 			)} bolsas de pastina de 1kg,  el precio es de: $${precioPast.toLocaleString('de-DE')}</p>
 			`);
 		}
 		let precioTotal = Number(precioFinal(preciopiso, precioPeg, precioPast));
-		$(`#presu__container${i}`).append(`
-			<p class="presupuesto__info presunuev__info">El precio total es de : $${precioTotal.toLocaleString(
-				'de-DE'
-			)}</p>
-			<img src="imagenes/${modelo.imagen}" class="presu__img" />
+		$(`#presupuesto__container${i}`).append(`
+			<p class="presupuesto__info">El precio total es de : $${precioTotal.toLocaleString('de-DE')}</p>
+			<img src="imagenes/${modelo.imagen}" class="presupuesto__img" />
 			`);
 	});
 }
