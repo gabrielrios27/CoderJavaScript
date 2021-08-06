@@ -1,8 +1,8 @@
 // calculador de presupuesto de porcelanato para piso con pastina y pegamento
 
 let cantidadDeCajas = 0;
-let precioPegamento = 1200;
-let precioPastina = 150;
+let precioPegamento = 850;
+let precioPastina = 160;
 let modelo = '';
 let verificador1 = false;
 let verificador2 = true;

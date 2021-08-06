@@ -281,14 +281,13 @@ label {
 	opacity: 0;
 }
 /* estilos del presupuesto--------------------- */
-
-.presupuesto__img {
-	width: 150px;
-	padding: 20px;
-}
 .presupuesto {
 	margin-top: 80px;
 	width: 100%;
+}
+.presupuesto__h1 {
+	text-align: center;
+	margin: 20px;
 }
 .presupuesto__info {
 	width: 100%;
@@ -300,4 +299,18 @@ label {
 	border: solid 1px black;
 	background-color: rgb(238, 238, 238);
 	margin-bottom: 15px;
+	display: grid;
+	grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 30px 60px 30px 40px 40px 50px;
+	grid-template-areas:
+		'tituloProducto tituloCaja tituloPrecio tituloCantidad tituloPrecioTotal'
+		'producto caja precio cantidad precioTotal'
+		'tituloPegPast tituloBolsa tituloPrecioBolsa tituloCantidadBolsa tituloPrecioTotalBol'
+		'pegamento bolsaPeg precioPeg cantidadPeg precioTotalPeg'
+		'pastina bolsaPastina precioPast cantidadPast precioTotalPast'
+		'. . . tituloTotalFinal totalFinal';
+}
+.presupuesto__img {
+	width: 150px;
+	padding: 20px;
 }
