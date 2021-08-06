@@ -301,16 +301,102 @@ label {
 	margin-bottom: 15px;
 	display: grid;
 	grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
-	grid-template-rows: 30px 60px 30px 40px 40px 50px;
+	grid-template-rows: 30px 40px auto auto auto 50px;
 	grid-template-areas:
 		'tituloProducto tituloCaja tituloPrecio tituloCantidad tituloPrecioTotal'
 		'producto caja precio cantidad precioTotal'
 		'tituloPegPast tituloBolsa tituloPrecioBolsa tituloCantidadBolsa tituloPrecioTotalBol'
 		'pegamento bolsaPeg precioPeg cantidadPeg precioTotalPeg'
 		'pastina bolsaPastina precioPast cantidadPast precioTotalPast'
-		'. . . tituloTotalFinal totalFinal';
+		'none none none tituloTotalFinal totalFinal';
+}
+.presupuesto__container h4,
+.presupuesto__container p {
+	border: solid 1px black;
+	padding: 3px 7px;
 }
 .presupuesto__img {
 	width: 150px;
 	padding: 20px;
+}
+.tituloProducto {
+	grid-area: tituloProducto;
+}
+.tituloCaja {
+	grid-area: tituloCaja;
+}
+.tituloPrecio {
+	grid-area: tituloPrecio;
+}
+.tituloCantidad {
+	grid-area: tituloCantidad;
+}
+.tituloPrecioTotal {
+	grid-area: tituloPrecioTotal;
+}
+.producto {
+	grid-area: producto;
+}
+.caja {
+	grid-area: caja;
+}
+.precio {
+	grid-area: precio;
+}
+.cantidad {
+	grid-area: cantidad;
+}
+.precioTotal {
+	grid-area: precioTotal;
+}
+.tituloPegPast {
+	grid-area: tituloPegPast;
+}
+.tituloBolsa {
+	grid-area: tituloBolsa;
+}
+.tituloPrecioBolsa {
+	grid-area: tituloPrecioBolsa;
+}
+.tituloCantidadBolsa {
+	grid-area: tituloCantidadBolsa;
+}
+.tituloPrecioTotalBol {
+	grid-area: tituloPrecioTotalBol;
+}
+.pegamento {
+	grid-area: pegamento;
+}
+.bolsaPeg {
+	grid-area: bolsaPeg;
+}
+.precioPeg {
+	grid-area: precioPeg;
+}
+.cantidadPeg {
+	grid-area: cantidadPeg;
+}
+.precioTotalPeg {
+	grid-area: precioTotalPeg;
+}
+.pastina {
+	grid-area: pastina;
+}
+.bolsaPastina {
+	grid-area: bolsaPastina;
+}
+.precioPast {
+	grid-area: precioPast;
+}
+.cantidadPast {
+	grid-area: cantidadPast;
+}
+.precioTotalPast {
+	grid-area: precioTotalPast;
+}
+.tituloTotalFinal {
+	grid-area: tituloTotalFinal;
+}
+.totalFinal {
+	grid-area: totalFinal;
 }

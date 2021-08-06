@@ -52,14 +52,14 @@ function imprimirPresupuesto() {
 		let presupuesto = $('.presupuesto');
 		presupuesto.append(`
 			<div class="presupuesto__container" id="presupuesto__container${i}">
-			<h5 class="tituloProducto">Producto</h5>
-			<h5 class="tituloCaja">Caja</h5>
-			<h5 class="tituloPrecio">Precio x M2</h5>
-			<h5 class="tituloCantidad">Cantidad</h5>
-			<h5 class="tituloPrecioTotal">Precio</h5>
+			<h4 class="tituloProducto">Producto</h4>
+			<h4 class="tituloCaja">Caja</h4>
+			<h4 class="tituloPrecio">Precio x M2</h4>
+			<h4 class="tituloCantidad">Cantidad</h4>
+			<h4 class="tituloPrecioTotal">Precio</h4>
 			<p class="producto">porcelanato ${modelo.nombre} ${modelo.medida} (codigo: ${modelo.codigo})</p>
 			<p class="caja">${modelo.caja} m2</p>
-			<p class="precio">${modelo.precio}</p>
+			<p class="precio">$ ${modelo.precio}</p>
 			<p class="cantidad">${cantidadReal.toLocaleString('de-DE')} m2 (${cantidadDeCajas.toLocaleString(
 			'de-DE'
 		)} cajas)</p>
@@ -69,11 +69,11 @@ function imprimirPresupuesto() {
 		`);
 		if (modelo.pegamento || modelo.pastina) {
 			$(`#presupuesto__container${i}`).append(`
-			<h5 class="tituloPegPast">Producto complementario</h5>
-			<h5 class="tituloBolsa">Bolsa</h5>
-			<h5 class="tituloPrecioBolsa">Precio por bolsa</h5>
-			<h5 class="tituloCantidadBolsa">Cantidad</h5>
-			<h5 class="tituloPrecioTotalBol">Precio</h5>
+			<h4 class="tituloPegPast">Producto complementario</h4>
+			<h4 class="tituloBolsa">Bolsa</h4>
+			<h4 class="tituloPrecioBolsa">Precio por bolsa</h4>
+			<h4 class="tituloCantidadBolsa">Cantidad</h4>
+			<h4 class="tituloPrecioTotalBol">Precio</h4>
 			`);
 		}
 		if (modelo.pegamento) {
@@ -81,7 +81,7 @@ function imprimirPresupuesto() {
 			$(`#presupuesto__container${i}`).append(`
 			<p class="pegamento">Adhesivo Full-Mix Porcelanato</p>
 			<p class="bolsaPeg">30kg</p>
-			<p class="precioPeg">${precioPegamento}</p>
+			<p class="precioPeg">$ ${precioPegamento}</p>
 			<p class="cantidadPeg">${cantPegamentoPastina.toLocaleString('de-DE')} bolsas</p>
 			<p class="precioTotalPeg">$ ${precioPeg.toLocaleString('de-DE')}</p>
 			`);
@@ -91,7 +91,7 @@ function imprimirPresupuesto() {
 			$(`#presupuesto__container${i}`).append(`
 			<p class="pastina">Pastina Full-Mix</p>
 			<p class="bolsaPastina">1kg</p>
-			<p class="precioPast">${precioPastina}</p>
+			<p class="precioPast">$ ${precioPastina}</p>
 			<p class="cantidadPast">${cantPegamentoPastina.toLocaleString('de-DE')} bolsas</p>
 			<p class="precioTotalPast">$ ${precioPast.toLocaleString('de-DE')}</p>
 			`);
