@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 	text-decoration: none;
 	font-family: 'Patua One', cursive, serif, sans-serif;
-	letter-spacing: 0.1px;
+	letter-spacing: 0.2px;
 }
 body {
 	display: flex;
@@ -301,7 +301,7 @@ label {
 	margin-bottom: 15px;
 	display: grid;
 	grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
-	grid-template-rows: 30px 40px auto auto auto 50px;
+	grid-template-rows: auto auto auto auto auto auto;
 	grid-template-areas:
 		'tituloProducto tituloCaja tituloPrecio tituloCantidad tituloPrecioTotal'
 		'producto caja precio cantidad precioTotal'
@@ -314,6 +314,10 @@ label {
 .presupuesto__container p {
 	border: solid 1px black;
 	padding: 3px 7px;
+}
+.presupuesto__container h4 {
+	color: rgb(243, 243, 243);
+	background-color: rgb(26, 26, 26);
 }
 .presupuesto__img {
 	width: 150px;
@@ -396,6 +400,7 @@ label {
 }
 .tituloTotalFinal {
 	grid-area: tituloTotalFinal;
+	border-left: solid 2px black !important;
 }
 .totalFinal {
 	grid-area: totalFinal;
