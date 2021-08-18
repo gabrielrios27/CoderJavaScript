@@ -11,6 +11,20 @@ let porcelanatos = [];
 
 const dataPorc = 'data/porcelanatos.json';
 
+class Complementario {
+	constructor(nombre, bolsa, precio) {
+		this.nombre = nombre;
+		this.bolsa = bolsa;
+		this.precio = Number(precio);
+	}
+	cantidad(cantidad) {
+		return Math.ceil(cantidad / 4);
+	}
+}
+
+const pegamento = new Complementario('Pegamento FULL-MIX porcelanato', '30kg', 850);
+const pastina = new Complementario('Pastina FULL-MIX', '1kg', 160);
+
 // base de datos de los porcelanatos
 $.getJSON(dataPorc, function (respuesta, estado) {
 	if (estado === 'success') {
@@ -35,9 +49,6 @@ function precioPorcelanato(cantidad) {
 		`El precio total por ${cantidad}m2 del porcelanato ${modelo.nombre} es de $${pisoFinal}`
 	);
 	return pisoFinal;
-}
-function cantidadPegamentoPastina(cantidad) {
-	return Math.ceil(cantidad / 4);
 }
 let precioTotalPegamento = (precioPegamento, cantPegamentoPastina) => {
 	let pegamentoFinal = precioPegamento * cantPegamentoPastina;
@@ -152,25 +163,30 @@ function mostrar() {
 			</div>
 		`);
 		// check y calculo de pastina y pegamento
-		let cantPegamentoPastina = cantidadPegamentoPastina(cantidadReal);
 		let precioPeg = 0;
 		let precioPast = 0;
 
 		if ($('#check-pegamento').prop('checked')) {
-			precioPeg = Number(precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2));
+			precioPeg = Number(
+				precioTotalPegamento(pegamento.precio, pegamento.cantidad(cantidadReal)).toFixed(2)
+			);
 			$('#calculo__container').append(`
-			<p class="calculo__info">Por ${cantPegamentoPastina.toLocaleString(
-				'de-DE'
-			)} bolsas de pegamento de 30kg el precio es de: $${precioPeg.toLocaleString('de-DE')}</p>
+			<p class="calculo__info">Por ${pegamento
+				.cantidad(cantidadReal)
+				.toLocaleString('de-DE')} bolsas de ${pegamento.nombre} de ${
+				pegamento.bolsa
+			} el precio es de: $${precioPeg.toLocaleString('de-DE')}</p>
 			`);
 			modelo.pegamento = true;
 		}
 		if ($('#check-pastina').prop('checked')) {
-			precioPast = Number(precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2));
+			precioPast = Number(
+				precioTotalPastina(pastina.precio, pastina.cantidad(cantidadReal)).toFixed(2)
+			);
 			$('#calculo__container').append(`
-			<p class="calculo__info">Por ${cantPegamentoPastina.toLocaleString(
-				'de-DE'
-			)} bolsas de pastina de 1kg,  el precio es de: $${precioPast.toLocaleString('de-DE')}</p>
+			<p class="calculo__info">Por ${pastina.cantidad(cantidadReal).toLocaleString('de-DE')} bolsas de ${
+				pastina.nombre
+			} de ${pastina.bolsa},  el precio es de: $${precioPast.toLocaleString('de-DE')}</p>
 			`);
 			modelo.pastina = true;
 		}

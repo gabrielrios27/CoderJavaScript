@@ -386,22 +386,22 @@ label {
 .pastina {
 	grid-area: pastina;
 }
-.bolsaPastina {
+.bolsa-pastina {
 	grid-area: bolsaPastina;
 }
-.precioPast {
+.precio-past {
 	grid-area: precioPast;
 }
-.cantidadPast {
+.cantidad-past {
 	grid-area: cantidadPast;
 }
-.precioTotalPast {
+.precio-total-past {
 	grid-area: precioTotalPast;
 }
-.tituloTotalFinal {
+.titulo-total-final {
 	grid-area: tituloTotalFinal;
 	border-left: solid 2px black !important;
 }
-.totalFinal {
+.total-final {
 	grid-area: totalFinal;
 }

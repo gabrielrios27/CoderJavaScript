@@ -90,16 +90,16 @@ function imprimirPresupuesto() {
 			precioPast = Number(precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2));
 			$(`#presupuesto__container${i}`).append(`
 			<p class="pastina">Pastina Full-Mix</p>
-			<p class="bolsaPastina">1kg</p>
-			<p class="precioPast">$ ${precioPastina}</p>
-			<p class="cantidadPast">${cantPegamentoPastina.toLocaleString('de-DE')} bolsas</p>
-			<p class="precioTotalPast">$ ${precioPast.toLocaleString('de-DE')}</p>
+			<p class="bolsa-pastina">1kg</p>
+			<p class="precio-past">$ ${precioPastina}</p>
+			<p class="cantidad-past">${cantPegamentoPastina.toLocaleString('de-DE')} bolsas</p>
+			<p class="precio-total-past">$ ${precioPast.toLocaleString('de-DE')}</p>
 			`);
 		}
 		let precioTotal = Number(precioFinal(preciopiso, precioPeg, precioPast));
 		$(`#presupuesto__container${i}`).append(`
-			<h4 class="tituloTotalFinal">Precio Total</h4>
-			<p class="totalFinal">$${precioTotal.toLocaleString('de-DE')}</p>
+			<h4 class="titulo-total-final">Precio Total</h4>
+			<p class="total-final">$${precioTotal.toLocaleString('de-DE')}</p>
 			`);
 		// <img src="imagenes/${modelo.imagen}" class="presupuesto__img" />
 	});
