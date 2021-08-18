@@ -112,7 +112,7 @@ body {
 	flex-wrap: wrap;
 	margin-top: 70px;
 }
-.boton{
+.boton {
 	width: 100%;
 	margin: auto;
 	display: flex;
@@ -120,7 +120,7 @@ body {
 	margin: 10px 10px 30px;
 }
 
-#btn__ceram{
+#btn__ceram {
 	padding: 3px 5px;
 	cursor: pointer;
 }
@@ -151,7 +151,7 @@ body {
 	background-color: rgb(250, 225, 189);
 	text-align: center;
 }
-.galeria__elegir--prox{
+.galeria__elegir--prox {
 	background-color: rgb(189, 208, 250);
 }
 .info {
@@ -230,11 +230,11 @@ body {
 	cursor: pointer;
 }
 /* presupesto */
-.presupuesto {
+.calculo {
 	width: 60%;
 	padding: 20px;
 }
-.presupuesto__info {
+.calculo__info {
 	width: 500px;
 	font-size: 20px;
 	font-weight: 500;
@@ -270,18 +270,22 @@ label {
 }
 /* estilos del presupuesto--------------------- */
 
-.presu__img {
+.presupuesto__img {
 	width: 150px;
 	padding: 20px;
 }
-.presunuev {
+.presupuesto {
 	margin-top: 80px;
 	width: 100%;
+	padding: 20px;
 }
-.presunuev__info {
+.presupuesto__info {
 	width: 100%;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 10px;
 }
-.presu__container {
+.presupuesto__container {
 	border: solid 1px black;
 	background-color: rgb(238, 238, 238);
 	margin-bottom: 15px;

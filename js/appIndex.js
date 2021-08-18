@@ -2,17 +2,17 @@
 
 let orden = 1; //para que los porcelanatos se muestren en orden por precio en la consola: 1-ascendente; 2-descendente
 let eleccion = 0;
-const dataPorc = "data/porcelanatos.json";
+const dataPorc = 'data/porcelanatos.json';
 let porcelanatos = [];
 // funciones
 function imprimirPorc() {
 	$('.galeria__container').remove();
 	$.getJSON(dataPorc, function (respuesta, estado) {
-		if(estado === "success"){
-		  porcelanatos = respuesta;
-		  porcelanatos.forEach((porc) => {
-			let galeria = $('#galeria');
-			galeria.append(`
+		if (estado === 'success') {
+			porcelanatos = respuesta;
+			porcelanatos.forEach((porc) => {
+				let galeria = $('#galeria');
+				galeria.append(`
 			<div class="galeria__container">
 				<a class="galeria__enlace" href="calculador.html" id="codigo${porc.codigo}">
 					<img src="imagenes/${porc.imagen}" class="galeria__img">
@@ -22,15 +22,14 @@ function imprimirPorc() {
 				</a>
 			</div>
 			`);
-			console.log("galeria creada con peticion AJAX")
-			$(`#codigo${porc.codigo}`).on('click', function () {
-				const elecJson = JSON.stringify(porc.codigo);
-				localStorage.setItem('eleccion', elecJson);
+				console.log('galeria creada con peticion AJAX');
+				$(`#codigo${porc.codigo}`).on('click', function () {
+					const elecJson = JSON.stringify(porc.codigo);
+					localStorage.setItem('eleccion', elecJson);
+				});
 			});
-		});
 		}
-		});
-	
+	});
 }
 function ascendente(a, b) {
 	return a.codigo - b.codigo;
@@ -55,25 +54,24 @@ if (orden == 1) {
 	}
 }
 // creo una lista de productos de mi array
-imprimirPorc();
+$(document).ready(imprimirPorc());
 
 // boton para ver fotos de casas
 
-$( document ).ready(function() {
-	const dataCeram = "data/ceramicos.json"; 
+$(document).ready(function () {
+	const dataCeram = 'data/ceramicos.json';
 
-    $('body').append(`<div class="boton">
+	$('body').append(`<div class="boton">
 	<button id="btn__ceram">Ver proximos ceramicos</button>
 	</div>`);
 
-    $("#btn__ceram").click(() => {
-		
-        $.ajax({
-            method: "GET",
-            url:  dataCeram,
-            success: function(respuesta){
+	$('#btn__ceram').click(() => {
+		$.ajax({
+			method: 'GET',
+			url: dataCeram,
+			success: function (respuesta) {
 				let ceramicos = respuesta;
-                ceramicos.forEach((ceram) => {
+				ceramicos.forEach((ceram) => {
 					let galeria = $('#galeria');
 					galeria.append(`
 					<div class="galeria__container" id="galeria__ceramicos">
@@ -83,13 +81,10 @@ $( document ).ready(function() {
 							<p class="galeria__elegir galeria__elegir--prox">Proximamente</p>
 					</div>
 					`);
-					console.log("galeria creada con peticion AJAX")
-					
-				})
-            }
-        });
-    	$('#btn__ceram').remove(); 
+					console.log('galeria creada con peticion AJAX');
+				});
+			},
+		});
+		$('#btn__ceram').remove();
 	});
 });
-
-	
