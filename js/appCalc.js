@@ -71,7 +71,7 @@ function mostrar() {
 	}
 
 	if (!verificador1) {
-		$('#alertaMod').animate(
+		$('#alerta-mod').animate(
 			{
 				'font-size': '12px',
 				height: '24px',
@@ -86,7 +86,7 @@ function mostrar() {
 		);
 		verificador1 = false;
 	} else {
-		$('#alertaMod').animate(
+		$('#alerta-mod').animate(
 			{
 				'font-size': '0px',
 				height: '0px',
@@ -102,7 +102,7 @@ function mostrar() {
 	}
 
 	if (metrosCuadrados <= 0 || !metrosCuadrados) {
-		$('#alertaCant').animate(
+		$('#alerta-cant').animate(
 			{
 				'font-size': '12px',
 				height: '44px',
@@ -117,7 +117,7 @@ function mostrar() {
 		);
 		verificador2 = false;
 	} else {
-		$('#alertaCant').animate(
+		$('#alerta-cant').animate(
 			{
 				'font-size': '0px',
 				height: '0px',
@@ -156,7 +156,7 @@ function mostrar() {
 		let precioPeg = 0;
 		let precioPast = 0;
 
-		if ($('#checkPegamento').prop('checked')) {
+		if ($('#check-pegamento').prop('checked')) {
 			precioPeg = Number(precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2));
 			$('#calculo__container').append(`
 			<p class="calculo__info">Por ${cantPegamentoPastina.toLocaleString(
@@ -165,7 +165,7 @@ function mostrar() {
 			`);
 			modelo.pegamento = true;
 		}
-		if ($('#checkPastina').prop('checked')) {
+		if ($('#check-pastina').prop('checked')) {
 			precioPast = Number(precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2));
 			$('#calculo__container').append(`
 			<p class="calculo__info">Por ${cantPegamentoPastina.toLocaleString(
@@ -184,10 +184,10 @@ function mostrar() {
 		$('.info__container').remove();
 		info.append(`
 		<div class="info__container">
-			<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
-			<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
-			<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
-			<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio.toLocaleString(
+			<h1 class="info__nombre" id="porc-nombre">Porcelanato ${modelo.nombre}</h1>
+			<h4 class="info__detalle" id="porc-medida">Medida: ${modelo.medida}</h4>
+			<h4 class="info__detalle" id="porc-caja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
+			<h4 class="info__detalle" id="porc-precio">Precio x m2: $${modelo.precio.toLocaleString(
 				'de-DE'
 			)}</h4>
 			<img src="imagenes/${modelo.imagen}" class="info__img" />
@@ -229,10 +229,10 @@ function ingresaCod(value) {
 			info.append('');
 			info.append(`
 			<div class="info__container">
-				<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
-				<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
-				<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
-				<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio.toLocaleString(
+				<h1 class="info__nombre" id="porc-nombre">Porcelanato ${modelo.nombre}</h1>
+				<h4 class="info__detalle" id="porc-medida">Medida: ${modelo.medida}</h4>
+				<h4 class="info__detalle" id="porc-caja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
+				<h4 class="info__detalle" id="porc-precio">Precio x m2: $${modelo.precio.toLocaleString(
 					'de-DE'
 				)}</h4>
 			</div>
@@ -253,14 +253,14 @@ function cambio() {
 	}
 }
 $('.datos__box:first-child').append(
-	`<p class="datos__alerta" id="alertaMod">Usted a ingresado un numero de modelo incorrecto.</p>`
+	`<p class="datos__alerta" id="alerta-mod">Usted a ingresado un numero de modelo incorrecto.</p>`
 );
 $('.datos__box:last').append(
-	`<p class="datos__alerta" id="alertaCant">Usted a ingresado una cantidad de metros cuadrado incorrecta.</p>`
+	`<p class="datos__alerta" id="alerta-cant">Usted a ingresado una cantidad de metros cuadrado incorrecta.</p>`
 );
 // observo el input para tomar cualquier cambio en tiempo real para mostrar el porcelanato elegido
 setInterval(cambio, 300);
 // calculo el presupuesto cuando se le da click al boton calcular
 
-let btnPre = $('#btnPre');
+let btnPre = $('#btn-pre');
 btnPre.on('click', mostrar);

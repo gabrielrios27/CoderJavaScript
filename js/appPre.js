@@ -52,38 +52,38 @@ function imprimirPresupuesto() {
 		let presupuesto = $('.presupuesto');
 		presupuesto.append(`
 			<div class="presupuesto__container" id="presupuesto__container${i}">
-			<h4 class="tituloProducto">Producto</h4>
-			<h4 class="tituloCaja">Caja</h4>
-			<h4 class="tituloPrecio">Precio x M2</h4>
-			<h4 class="tituloCantidad">Cantidad</h4>
-			<h4 class="tituloPrecioTotal">Precio</h4>
+			<h4 class="titulo-producto">Producto</h4>
+			<h4 class="titulo-caja">Caja</h4>
+			<h4 class="titulo-precio">Precio x M2</h4>
+			<h4 class="titulo-cantidad">Cantidad</h4>
+			<h4 class="titulo-precio-total">Precio</h4>
 			<p class="producto">porcelanato ${modelo.nombre} ${modelo.medida} (codigo: ${modelo.codigo})</p>
 			<p class="caja">${modelo.caja} m2</p>
 			<p class="precio">$ ${modelo.precio}</p>
 			<p class="cantidad">${cantidadReal.toLocaleString('de-DE')} m2 (${cantidadDeCajas.toLocaleString(
 			'de-DE'
 		)} cajas)</p>
-			<p class="precioTotal">$ ${preciopiso.toLocaleString('de-DE')}</p>	
+			<p class="precio-total">$ ${preciopiso.toLocaleString('de-DE')}</p>	
 		
 			</div>
 		`);
 		if (modelo.pegamento || modelo.pastina) {
 			$(`#presupuesto__container${i}`).append(`
-			<h4 class="tituloPegPast">Producto complementario</h4>
-			<h4 class="tituloBolsa">Bolsa</h4>
-			<h4 class="tituloPrecioBolsa">Precio por bolsa</h4>
-			<h4 class="tituloCantidadBolsa">Cantidad</h4>
-			<h4 class="tituloPrecioTotalBol">Precio</h4>
+			<h4 class="titulo-peg-past">Producto complementario</h4>
+			<h4 class="titulo-bolsa">Bolsa</h4>
+			<h4 class="titulo-precio-bolsa">Precio por bolsa</h4>
+			<h4 class="titulo-cantidad-bolsa">Cantidad</h4>
+			<h4 class="titulo-precio-total-bol">Precio</h4>
 			`);
 		}
 		if (modelo.pegamento) {
 			precioPeg = Number(precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2));
 			$(`#presupuesto__container${i}`).append(`
 			<p class="pegamento">Adhesivo Full-Mix Porcelanato</p>
-			<p class="bolsaPeg">30kg</p>
-			<p class="precioPeg">$ ${precioPegamento}</p>
-			<p class="cantidadPeg">${cantPegamentoPastina.toLocaleString('de-DE')} bolsas</p>
-			<p class="precioTotalPeg">$ ${precioPeg.toLocaleString('de-DE')}</p>
+			<p class="bolsa-peg">30kg</p>
+			<p class="precio-peg">$ ${precioPegamento}</p>
+			<p class="cantidad-peg">${cantPegamentoPastina.toLocaleString('de-DE')} bolsas</p>
+			<p class="precio-total-peg">$ ${precioPeg.toLocaleString('de-DE')}</p>
 			`);
 		}
 		if (modelo.pastina) {

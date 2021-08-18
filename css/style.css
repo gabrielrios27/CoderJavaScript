@@ -303,10 +303,10 @@ label {
 	grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: auto auto auto auto auto auto;
 	grid-template-areas:
-		'tituloProducto tituloCaja tituloPrecio tituloCantidad tituloPrecioTotal'
+		'titulo-producto titulo-caja titulo-precio titulo-cantidad titulo-precio-total'
 		'producto caja precio cantidad precioTotal'
-		'tituloPegPast tituloBolsa tituloPrecioBolsa tituloCantidadBolsa tituloPrecioTotalBol'
-		'pegamento bolsaPeg precioPeg cantidadPeg precioTotalPeg'
+		'titulo-peg-past titulo-bolsa titulo-precio-bolsa titulo-cantidad-bolsa titulo-precio-total-bol'
+		'pegamento bolsa-peg precioPeg cantidadPeg precioTotalPeg'
 		'pastina bolsaPastina precioPast cantidadPast precioTotalPast'
 		'none none none tituloTotalFinal totalFinal';
 }
@@ -323,20 +323,20 @@ label {
 	width: 150px;
 	padding: 20px;
 }
-.tituloProducto {
-	grid-area: tituloProducto;
+.titulo-producto {
+	grid-area: titulo-producto;
 }
-.tituloCaja {
-	grid-area: tituloCaja;
+.titulo-caja {
+	grid-area: titulo-caja;
 }
-.tituloPrecio {
-	grid-area: tituloPrecio;
+.titulo-precio {
+	grid-area: titulo-precio;
 }
-.tituloCantidad {
-	grid-area: tituloCantidad;
+.titulo-cantidad {
+	grid-area: titulo-cantidad;
 }
-.tituloPrecioTotal {
-	grid-area: tituloPrecioTotal;
+.titulo-precio-total {
+	grid-area: titulo-precio-total;
 }
 .producto {
 	grid-area: producto;
@@ -350,37 +350,37 @@ label {
 .cantidad {
 	grid-area: cantidad;
 }
-.precioTotal {
+.precio-total {
 	grid-area: precioTotal;
 }
-.tituloPegPast {
-	grid-area: tituloPegPast;
+.titulo-peg-past {
+	grid-area: titulo-peg-past;
 }
-.tituloBolsa {
-	grid-area: tituloBolsa;
+.titulo-bolsa {
+	grid-area: titulo-bolsa;
 }
-.tituloPrecioBolsa {
-	grid-area: tituloPrecioBolsa;
+.titulo-precio-bolsa {
+	grid-area: titulo-precio-bolsa;
 }
-.tituloCantidadBolsa {
-	grid-area: tituloCantidadBolsa;
+.titulo-cantidad-bolsa {
+	grid-area: titulo-cantidad-bolsa;
 }
-.tituloPrecioTotalBol {
-	grid-area: tituloPrecioTotalBol;
+.titulo-precio-total-bol {
+	grid-area: titulo-precio-total-bol;
 }
 .pegamento {
 	grid-area: pegamento;
 }
-.bolsaPeg {
-	grid-area: bolsaPeg;
+.bolsa-peg {
+	grid-area: bolsa-peg;
 }
-.precioPeg {
+.precio-peg {
 	grid-area: precioPeg;
 }
-.cantidadPeg {
+.cantidad-peg {
 	grid-area: cantidadPeg;
 }
-.precioTotalPeg {
+.precio-total-peg {
 	grid-area: precioTotalPeg;
 }
 .pastina {
