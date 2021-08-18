@@ -3,12 +3,22 @@
 	padding: 0;
 	box-sizing: border-box;
 	text-decoration: none;
-	font-family: 'Encode Sans SC', sans-serif;
+	font-family: 'Patua One', cursive, serif, sans-serif;
+	letter-spacing: 0.2px;
 }
 body {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+	font-weight: 200;
 }
 .header {
 	width: 100vw;
@@ -22,6 +32,7 @@ body {
 	box-shadow: 0 0 10px rgba(80, 80, 80, 0.548);
 }
 .header__enlace {
+	font-size: 19px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -154,23 +165,7 @@ body {
 .galeria__elegir--prox {
 	background-color: rgb(189, 208, 250);
 }
-.info {
-	width: 40%;
-	padding: 20px 40px;
-	background-color: rgb(19, 19, 19);
-	color: rgb(245, 245, 245);
-}
-.info__nombre {
-	margin: 20px 0px;
-}
-.info__detalle {
-	padding: 5px;
-}
-.info__img {
-	width: 100%;
-	margin-top: 10px;
-}
-
+/* seccion de calculador------ */
 .datos {
 	width: 100%;
 	display: flex;
@@ -229,9 +224,26 @@ body {
 	margin: 8px;
 	cursor: pointer;
 }
+.info {
+	width: 50%;
+	padding: 20px 40px;
+	background-color: rgb(19, 19, 19);
+	color: rgb(245, 245, 245);
+}
+.info__nombre {
+	margin: 20px 0px;
+}
+.info__detalle {
+	padding: 5px;
+}
+.info__img {
+	width: 100%;
+	margin-top: 10px;
+}
+
 /* presupesto */
 .calculo {
-	width: 60%;
+	width: 50%;
 	padding: 20px;
 }
 .calculo__info {
@@ -269,15 +281,14 @@ label {
 	opacity: 0;
 }
 /* estilos del presupuesto--------------------- */
-
-.presupuesto__img {
-	width: 150px;
-	padding: 20px;
-}
 .presupuesto {
 	margin-top: 80px;
 	width: 100%;
 	padding: 20px;
+}
+.presupuesto__h1 {
+	text-align: center;
+	margin: 20px;
 }
 .presupuesto__info {
 	width: 100%;
@@ -289,4 +300,109 @@ label {
 	border: solid 1px black;
 	background-color: rgb(238, 238, 238);
 	margin-bottom: 15px;
+	display: grid;
+	grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto auto auto auto auto auto;
+	grid-template-areas:
+		'titulo-producto titulo-caja titulo-precio titulo-cantidad titulo-precio-total'
+		'producto caja precio cantidad precioTotal'
+		'titulo-peg-past titulo-bolsa titulo-precio-bolsa titulo-cantidad-bolsa titulo-precio-total-bol'
+		'pegamento bolsa-peg precioPeg cantidadPeg precioTotalPeg'
+		'pastina bolsaPastina precioPast cantidadPast precioTotalPast'
+		'none none none tituloTotalFinal totalFinal';
+}
+.presupuesto__container h4,
+.presupuesto__container p {
+	border: solid 1px black;
+	padding: 3px 7px;
+}
+.presupuesto__container h4 {
+	color: rgb(243, 243, 243);
+	background-color: rgb(26, 26, 26);
+}
+.presupuesto__img {
+	width: 150px;
+	padding: 20px;
+}
+.titulo-producto {
+	grid-area: titulo-producto;
+}
+.titulo-caja {
+	grid-area: titulo-caja;
+}
+.titulo-precio {
+	grid-area: titulo-precio;
+}
+.titulo-cantidad {
+	grid-area: titulo-cantidad;
+}
+.titulo-precio-total {
+	grid-area: titulo-precio-total;
+}
+.producto {
+	grid-area: producto;
+}
+.caja {
+	grid-area: caja;
+}
+.precio {
+	grid-area: precio;
+}
+.cantidad {
+	grid-area: cantidad;
+}
+.precio-total {
+	grid-area: precioTotal;
+}
+.titulo-peg-past {
+	grid-area: titulo-peg-past;
+}
+.titulo-bolsa {
+	grid-area: titulo-bolsa;
+}
+.titulo-precio-bolsa {
+	grid-area: titulo-precio-bolsa;
+}
+.titulo-cantidad-bolsa {
+	grid-area: titulo-cantidad-bolsa;
+}
+.titulo-precio-total-bol {
+	grid-area: titulo-precio-total-bol;
+}
+.pegamento {
+	grid-area: pegamento;
+}
+.bolsa-peg {
+	grid-area: bolsa-peg;
+}
+.precio-peg {
+	grid-area: precioPeg;
+}
+.cantidad-peg {
+	grid-area: cantidadPeg;
+}
+.precio-total-peg {
+	grid-area: precioTotalPeg;
+}
+.pastina {
+	grid-area: pastina;
+}
+.bolsa-pastina {
+	grid-area: bolsaPastina;
+}
+.precio-past {
+	grid-area: precioPast;
+}
+.cantidad-past {
+	grid-area: cantidadPast;
+}
+.precio-total-past {
+	grid-area: precioTotalPast;
+}
+.titulo-total-final {
+	grid-area: tituloTotalFinal;
+	border-left: solid 2px black !important;
+}
+.total-final {
+	grid-area: totalFinal;
 }

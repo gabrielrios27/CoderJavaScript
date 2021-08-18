@@ -1,8 +1,8 @@
 // calculador de calculo de porcelanato para piso con pastina y pegamento
 
 let cantidadDeCajas = 0;
-let precioPegamento = 1200;
-let precioPastina = 150;
+let precioPegamento = 850;
+let precioPastina = 160;
 let modelo = '';
 let verificador1 = false;
 let verificador2 = true;
@@ -10,6 +10,20 @@ let codViejo = 0;
 let porcelanatos = [];
 
 const dataPorc = 'data/porcelanatos.json';
+
+class Complementario {
+	constructor(nombre, bolsa, precio) {
+		this.nombre = nombre;
+		this.bolsa = bolsa;
+		this.precio = Number(precio);
+	}
+	cantidad(cantidad) {
+		return Math.ceil(cantidad / 4);
+	}
+}
+
+const pegamento = new Complementario('Pegamento FULL-MIX porcelanato', '30kg', 850);
+const pastina = new Complementario('Pastina FULL-MIX', '1kg', 160);
 
 // base de datos de los porcelanatos
 $.getJSON(dataPorc, function (respuesta, estado) {
@@ -35,9 +49,6 @@ function precioPorcelanato(cantidad) {
 		`El precio total por ${cantidad}m2 del porcelanato ${modelo.nombre} es de $${pisoFinal}`
 	);
 	return pisoFinal;
-}
-function cantidadPegamentoPastina(cantidad) {
-	return Math.ceil(cantidad / 4);
 }
 let precioTotalPegamento = (precioPegamento, cantPegamentoPastina) => {
 	let pegamentoFinal = precioPegamento * cantPegamentoPastina;
@@ -71,7 +82,7 @@ function mostrar() {
 	}
 
 	if (!verificador1) {
-		$('#alertaMod').animate(
+		$('#alerta-mod').animate(
 			{
 				'font-size': '12px',
 				height: '24px',
@@ -86,7 +97,7 @@ function mostrar() {
 		);
 		verificador1 = false;
 	} else {
-		$('#alertaMod').animate(
+		$('#alerta-mod').animate(
 			{
 				'font-size': '0px',
 				height: '0px',
@@ -102,7 +113,7 @@ function mostrar() {
 	}
 
 	if (metrosCuadrados <= 0 || !metrosCuadrados) {
-		$('#alertaCant').animate(
+		$('#alerta-cant').animate(
 			{
 				'font-size': '12px',
 				height: '44px',
@@ -117,7 +128,7 @@ function mostrar() {
 		);
 		verificador2 = false;
 	} else {
-		$('#alertaCant').animate(
+		$('#alerta-cant').animate(
 			{
 				'font-size': '0px',
 				height: '0px',
@@ -138,10 +149,10 @@ function mostrar() {
 		// calculo el calculo
 		let cantidadReal = Number(cantidad(modelo.cantidad).toFixed(2));
 		let preciopiso = Number(precioPorcelanato(cantidadReal).toFixed(2));
-		let calculo = $('.calculo');
+		let presupuesto = $('.calculo');
 		$('.calculo__container').remove();
-		calculo.append(`
-			<div class="calculo__container" id="pre-calculo">		
+		presupuesto.append(`
+			<div class="calculo__container" id="calculo__container">		
 				<p class="calculo__info">
 				Por ${cantidadReal.toLocaleString(
 					'de-DE'
@@ -152,42 +163,47 @@ function mostrar() {
 			</div>
 		`);
 		// check y calculo de pastina y pegamento
-		let cantPegamentoPastina = cantidadPegamentoPastina(cantidadReal);
 		let precioPeg = 0;
 		let precioPast = 0;
 
-		if ($('#checkPegamento').prop('checked')) {
-			precioPeg = Number(precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2));
-			$('#pre-calculo').append(`
-			<p class="calculo__info">Por ${cantPegamentoPastina.toLocaleString(
-				'de-DE'
-			)} bolsas de pegamento de 30kg el precio es de: $${precioPeg.toLocaleString('de-DE')}</p>
+		if ($('#check-pegamento').prop('checked')) {
+			precioPeg = Number(
+				precioTotalPegamento(pegamento.precio, pegamento.cantidad(cantidadReal)).toFixed(2)
+			);
+			$('#calculo__container').append(`
+			<p class="calculo__info">Por ${pegamento
+				.cantidad(cantidadReal)
+				.toLocaleString('de-DE')} bolsas de ${pegamento.nombre} de ${
+				pegamento.bolsa
+			} el precio es de: $${precioPeg.toLocaleString('de-DE')}</p>
 			`);
 			modelo.pegamento = true;
 		}
-		if ($('#checkPastina').prop('checked')) {
-			precioPast = Number(precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2));
-			$('#pre-calculo').append(`
-			<p class="calculo__info">Por ${cantPegamentoPastina.toLocaleString(
-				'de-DE'
-			)} bolsas de pastina de 1kg,  el precio es de: $${precioPast.toLocaleString('de-DE')}</p>
+		if ($('#check-pastina').prop('checked')) {
+			precioPast = Number(
+				precioTotalPastina(pastina.precio, pastina.cantidad(cantidadReal)).toFixed(2)
+			);
+			$('#calculo__container').append(`
+			<p class="calculo__info">Por ${pastina.cantidad(cantidadReal).toLocaleString('de-DE')} bolsas de ${
+				pastina.nombre
+			} de ${pastina.bolsa},  el precio es de: $${precioPast.toLocaleString('de-DE')}</p>
 			`);
 			modelo.pastina = true;
 		}
 		// calculo del precio total
 		let precioTotal = precioFinal(preciopiso, precioPeg, precioPast);
-		$('#pre-calculo').append(`
+		$('#calculo__container').append(`
 		<p class="calculo__info">El precio total es de : $${precioTotal.toLocaleString('de-DE')}</p>	
 		`);
 		// cambio la seccion info
 		let info = $('.info');
-		info.append('');
+		$('.info__container').remove();
 		info.append(`
-		<div class="calculo__container">
-			<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
-			<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
-			<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
-			<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio.toLocaleString(
+		<div class="info__container">
+			<h1 class="info__nombre" id="porc-nombre">Porcelanato ${modelo.nombre}</h1>
+			<h4 class="info__detalle" id="porc-medida">Medida: ${modelo.medida}</h4>
+			<h4 class="info__detalle" id="porc-caja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
+			<h4 class="info__detalle" id="porc-precio">Precio x m2: $${modelo.precio.toLocaleString(
 				'de-DE'
 			)}</h4>
 			<img src="imagenes/${modelo.imagen}" class="info__img" />
@@ -207,7 +223,7 @@ function mostrar() {
 			console.log(modYCant1);
 		}
 	} else {
-		$('.calculo__container').remove();
+		$('.info__container').remove();
 		$('.info').css({ 'background-color': 'rgb(252, 252, 252)' });
 	}
 }
@@ -217,9 +233,9 @@ function ingresaCod(value) {
 		if (modelo.codigo == value) {
 			i++;
 			$('.info').css({ 'background-color': 'rgb(19, 19, 19)' });
-			let calculo = $('.calculo');
+			let presupuesto = $('.calculo');
 			$('.calculo__container').remove();
-			calculo.append(`
+			presupuesto.append(`
 				<div class="calculo__container">		
 					<img src="imagenes/${modelo.imagen}" class="info__img" />
 				</div>
@@ -228,11 +244,11 @@ function ingresaCod(value) {
 			let info = $('.info');
 			info.append('');
 			info.append(`
-			<div class="calculo__container">
-				<h1 class="info__nombre" id="porcNombre">Porcelanato ${modelo.nombre}</h1>
-				<h4 class="info__detalle" id="porcMedida">Medida: ${modelo.medida}</h4>
-				<h4 class="info__detalle" id="porcCaja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
-				<h4 class="info__detalle" id="porcPrecio">Precio x m2: $${modelo.precio.toLocaleString(
+			<div class="info__container">
+				<h1 class="info__nombre" id="porc-nombre">Porcelanato ${modelo.nombre}</h1>
+				<h4 class="info__detalle" id="porc-medida">Medida: ${modelo.medida}</h4>
+				<h4 class="info__detalle" id="porc-caja">Metros cuadrados por caja: ${modelo.caja} m2</h4>
+				<h4 class="info__detalle" id="porc-precio">Precio x m2: $${modelo.precio.toLocaleString(
 					'de-DE'
 				)}</h4>
 			</div>
@@ -240,7 +256,7 @@ function ingresaCod(value) {
 		}
 	}
 	if (i == 0) {
-		$('.calculo__container').remove();
+		$('.info__container').remove();
 		$('.info').css({ 'background-color': 'rgb(252, 252, 252)' });
 	}
 }
@@ -253,14 +269,14 @@ function cambio() {
 	}
 }
 $('.datos__box:first-child').append(
-	`<p class="datos__alerta" id="alertaMod">Usted a ingresado un numero de modelo incorrecto.</p>`
+	`<p class="datos__alerta" id="alerta-mod">Usted a ingresado un numero de modelo incorrecto.</p>`
 );
 $('.datos__box:last').append(
-	`<p class="datos__alerta" id="alertaCant">Usted a ingresado una cantidad de metros cuadrado incorrecta.</p>`
+	`<p class="datos__alerta" id="alerta-cant">Usted a ingresado una cantidad de metros cuadrado incorrecta.</p>`
 );
 // observo el input para tomar cualquier cambio en tiempo real para mostrar el porcelanato elegido
 setInterval(cambio, 300);
 // calculó el valor cuando se le da click al boton calcular
 
-let btnPre = $('#btnPre');
+let btnPre = $('#btn-pre');
 btnPre.on('click', mostrar);

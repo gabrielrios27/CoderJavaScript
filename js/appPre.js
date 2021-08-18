@@ -1,8 +1,8 @@
 // calculador de presupuesto de porcelanato para piso con pastina y pegamento
 
 let cantidadDeCajas = 0;
-let precioPegamento = 800;
-let precioPastina = 150;
+let precioPegamento = 850;
+let precioPastina = 160;
 let modelo = '';
 let i = 0;
 
@@ -51,37 +51,61 @@ function imprimirPresupuesto() {
 
 		let presupuesto = $('.presupuesto');
 		presupuesto.append(`
-			<div class="presupuesto__container" id="presupuesto__container${i}">		
-				<p class="presupuesto__info">
-				Por ${cantidadReal.toLocaleString('de-DE')}m2 (${cantidadDeCajas.toLocaleString(
+			<div class="presupuesto__container" id="presupuesto__container${i}">
+			<h4 class="titulo-producto">Producto</h4>
+			<h4 class="titulo-caja">Caja</h4>
+			<h4 class="titulo-precio">Precio x M2</h4>
+			<h4 class="titulo-cantidad">Cantidad</h4>
+			<h4 class="titulo-precio-total">Precio</h4>
+			<p class="producto">porcelanato ${modelo.nombre} ${modelo.medida} (codigo: ${modelo.codigo})</p>
+			<p class="caja">${modelo.caja} m2</p>
+			<p class="precio">$ ${modelo.precio}</p>
+			<p class="cantidad">${cantidadReal.toLocaleString('de-DE')} m2 (${cantidadDeCajas.toLocaleString(
 			'de-DE'
-		)} cajas) de porcelanato ${modelo.nombre} ${
-			modelo.medida
-		} el precio es de: $${preciopiso.toLocaleString('de-DE')}
-				</p>
+		)} cajas)</p>
+			<p class="precio-total">$ ${preciopiso.toLocaleString('de-DE')}</p>	
+		
 			</div>
 		`);
+		if (modelo.pegamento || modelo.pastina) {
+			$(`#presupuesto__container${i}`).append(`
+			<h4 class="titulo-peg-past">Producto complementario</h4>
+			<h4 class="titulo-bolsa">Bolsa</h4>
+			<h4 class="titulo-precio-bolsa">Precio por bolsa</h4>
+			<h4 class="titulo-cantidad-bolsa">Cantidad</h4>
+			<h4 class="titulo-precio-total-bol">Precio</h4>
+			`);
+		}
 		if (modelo.pegamento) {
 			precioPeg = Number(precioTotalPegamento(precioPegamento, cantPegamentoPastina).toFixed(2));
 			$(`#presupuesto__container${i}`).append(`
-			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString(
-				'de-DE'
-			)} bolsas de pegamento de 30kg el precio es de: $${precioPeg.toLocaleString('de-DE')}</p>
+			<p class="pegamento">Adhesivo Full-Mix Porcelanato</p>
+			<p class="bolsa-peg">30kg</p>
+			<p class="precio-peg">$ ${precioPegamento}</p>
+			<p class="cantidad-peg">${cantPegamentoPastina.toLocaleString('de-DE')} bolsas</p>
+			<p class="precio-total-peg">$ ${precioPeg.toLocaleString('de-DE')}</p>
 			`);
 		}
 		if (modelo.pastina) {
 			precioPast = Number(precioTotalPastina(precioPastina, cantPegamentoPastina).toFixed(2));
 			$(`#presupuesto__container${i}`).append(`
-			<p class="presupuesto__info">Por ${cantPegamentoPastina.toLocaleString(
-				'de-DE'
-			)} bolsas de pastina de 1kg,  el precio es de: $${precioPast.toLocaleString('de-DE')}</p>
+			<p class="pastina">Pastina Full-Mix</p>
+			<p class="bolsa-pastina">1kg</p>
+			<p class="precio-past">$ ${precioPastina}</p>
+			<p class="cantidad-past">${cantPegamentoPastina.toLocaleString('de-DE')} bolsas</p>
+			<p class="precio-total-past">$ ${precioPast.toLocaleString('de-DE')}</p>
 			`);
 		}
 		let precioTotal = Number(precioFinal(preciopiso, precioPeg, precioPast));
 		$(`#presupuesto__container${i}`).append(`
-			<p class="presupuesto__info">El precio total es de : $${precioTotal.toLocaleString('de-DE')}</p>
-			<img src="imagenes/${modelo.imagen}" class="presupuesto__img" />
+			<h4 class="titulo-total-final">Precio Total</h4>
+			<p class="total-final">$${precioTotal.toLocaleString('de-DE')}</p>
 			`);
+		// <img src="imagenes/${modelo.imagen}" class="presupuesto__img" />
 	});
 }
+let presupuesto = $('.presupuesto');
+presupuesto.append(`
+			<h1 class="presupuesto__h1">Presupuestos</h1>
+		`);
 imprimirPresupuesto();
