@@ -1,9 +1,9 @@
 :root {
 	--blanco: #f1f1f1;
-	--amarillo: #ebf02c;
-	--celeste: #3582b9;
-	--azul: #04295e;
-	--azul-oscuro: #000928;
+	--amarillo: #ffec47;
+	--celeste: #fffb8d;
+	--azul: #5104db;
+	--azul-oscuro: #ffa412;
 	--negro: rgb(10, 10, 10);
 }
 
@@ -51,76 +51,12 @@ label {
 	padding: 0 20px;
 	color: var(--negro);
 }
-.header__enlace--left {
-	color: var(--negro);
-	background-color: var(--amarillo);
-	clip-path: polygon(
-		0 90%,
-		0 79%,
-		0 65%,
-		0 49%,
-		0 35%,
-		0 22%,
-		0 10%,
-		0 0,
-		82% 0,
-		83% 9%,
-		85% 24%,
-		88% 39%,
-		93% 53%,
-		97% 66%,
-		99% 76%,
-		100% 88%,
-		100% 100%,
-		0 100%
-	);
+.header__enlace--active {
+	color: var(--amarillo);
+	background-color: var(--negro);
+	clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
 }
-.header__enlace--center {
-	background-color: rgb(250, 225, 189);
-	clip-path: polygon(
-		0% 88%,
-		1% 76%,
-		3% 66%,
-		7% 53%,
-		12% 39%,
-		15% 24%,
-		17% 9%,
-		18% 0,
-		82% 0,
-		83% 9%,
-		85% 24%,
-		88% 39%,
-		93% 53%,
-		97% 66%,
-		99% 76%,
-		100% 88%,
-		100% 100%,
-		0 100%
-	);
-}
-.header__enlace--right {
-	background-color: rgb(250, 225, 189);
-	clip-path: polygon(
-		0% 88%,
-		1% 76%,
-		3% 66%,
-		7% 53%,
-		12% 39%,
-		15% 24%,
-		17% 9%,
-		18% 0,
-		100% 0,
-		100% 9%,
-		100% 24%,
-		100% 39%,
-		100% 53%,
-		100% 66%,
-		100% 76%,
-		100% 88%,
-		100% 100%,
-		0 100%
-	);
-}
+
 .header__logo {
 	height: 70px;
 }
