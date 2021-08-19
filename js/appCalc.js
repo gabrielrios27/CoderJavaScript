@@ -1,8 +1,6 @@
-// calculador de presupuesto de porcelanato para piso con pastina y pegamento
+// calculador de presupuesto de porcelanato para piso
 
 let cantidadDeCajas = 0;
-let precioPegamento = 850;
-let precioPastina = 160;
 let modelo = '';
 let verificador1 = false;
 let verificador2 = true;
@@ -11,26 +9,13 @@ let porcelanatos = [];
 
 const dataPorc = 'data/porcelanatos.json';
 
-class Complementario {
-	constructor(nombre, bolsa, precio) {
-		this.nombre = nombre;
-		this.bolsa = bolsa;
-		this.precio = Number(precio);
-	}
-	cantidad(cantidad) {
-		return Math.ceil(cantidad / 4);
-	}
-}
-
-const pegamento = new Complementario('Pegamento FULL-MIX porcelanato', '30kg', 850);
-const pastina = new Complementario('Pastina FULL-MIX', '1kg', 160);
-
 // base de datos de los porcelanatos
 $.getJSON(dataPorc, function (respuesta, estado) {
 	if (estado === 'success') {
 		porcelanatos = respuesta;
 	}
 });
+
 // cargo la eleccion del porcelanato desde el index
 const eleccion = JSON.parse(localStorage.getItem('eleccion'));
 console.log(eleccion);
@@ -38,6 +23,7 @@ console.log(eleccion);
 if (eleccion !== 0) {
 	$('#codigo').val(eleccion);
 }
+
 // funciones
 function cantidad(metrosCuadrados) {
 	cantidadDeCajas = Math.ceil(metrosCuadrados / modelo.caja);
