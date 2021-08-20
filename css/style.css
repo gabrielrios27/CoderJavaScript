@@ -1,9 +1,9 @@
 :root {
-	--blanco: #f1f1f1;
+	--blanco: #f7f7f7;
 	--amarillo: #ffec47;
-	--celeste: #fffb8d;
-	--azul: #5104db;
-	--azul-oscuro: #ffa412;
+	--amarillo-claro: #fffb8d;
+	--violeta: #0804db;
+	--naranja: #ffa412;
 	--negro: rgb(10, 10, 10);
 }
 
@@ -12,7 +12,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	text-decoration: none;
-	font-family: 'Patua One', cursive, serif, sans-serif;
+	font-family: 'Roboto', serif, sans-serif;
 	letter-spacing: 0.2px;
 }
 body {
@@ -21,44 +21,36 @@ body {
 	flex-wrap: wrap;
 	background-color: var(--blanco);
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-label {
-	font-weight: 200;
-}
 .header {
 	width: 100vw;
-	height: 70px;
+	height: 50px;
 	display: flex;
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 100;
-	background-color: var(--blanco);
+	background-color: var(--negro);
 	box-shadow: 0 0 10px rgba(80, 80, 80, 0.548);
 }
 .header__enlace {
-	font-size: 19px;
+	font-size: 16px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 33.33%;
 	height: 100%;
 	padding: 0 20px;
-	color: var(--negro);
+	color: var(--blanco);
+	font-weight: 600;
 }
 .header__enlace--active {
-	color: var(--amarillo);
-	background-color: var(--negro);
+	color: var(--negro);
+	background-color: var(--amarillo);
 	clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
 }
 
 .header__logo {
-	height: 70px;
+	height: 50px;
 }
 
 /* etilos de la galeria generada por js-------------------------- */
@@ -86,11 +78,11 @@ label {
 	width: 290px;
 	padding: 20px;
 	margin: 10px;
-	background-color: rgb(238, 238, 238);
+	background-color: var(--negro);
 	border-radius: 3px;
 }
 .galeria__enlace {
-	color: rgb(26, 26, 26);
+	color: var(--blanco);
 }
 .galeria__h1 {
 	width: 100%;
@@ -103,31 +95,37 @@ label {
 	object-fit: cover;
 }
 .galeria__elegir {
+	color: var(--negro);
 	padding: 5px 0px;
 	font-size: 14px;
 	margin-top: 5px;
-	background-color: rgb(250, 225, 189);
+	background-color: var(--naranja);
 	text-align: center;
 }
 .galeria__elegir--prox {
-	background-color: rgb(189, 208, 250);
+	background-color: var(--amarillo-claro);
+}
+.galeria__ceramicos {
+	color: var(--blanco);
 }
 /* seccion de calculador------ */
 .datos {
 	width: 50%;
 	display: flex;
 	justify-content: center;
-	background-color: rgb(247, 242, 229);
-	padding: 20px;
-	margin-top: 70px;
+	background-color: rgb(204, 204, 204);
+	padding: 10px;
+	margin-top: 50px;
 }
 .datos__container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
-	background-color: rgb(250, 225, 189);
+	color: var(--blanco);
+	background-color: var(--negro);
 	padding: 20px 30px;
+	border-radius: 2px;
 }
 .datos__box {
 	display: flex;
@@ -139,7 +137,6 @@ label {
 	display: inline-block;
 	max-width: 350px;
 	padding: 5px;
-	/* font-weight: 600; */
 }
 .datos__cant {
 	position: relative;
@@ -167,16 +164,21 @@ label {
 	padding-left: 10px;
 }
 .datos__button {
-	padding: 2px 8px;
-	margin: 8px;
+	padding: 4px 12px;
+	margin: 10px;
 	cursor: pointer;
+	background-color: var(--amarillo);
+	font-size: 14px;
+	font-weight: 600;
+	border-style: none;
+	border-radius: 2px;
 }
 .info {
 	width: 50%;
-	padding: 20px 40px;
-	margin-top: 70px;
-	background-color: rgb(19, 19, 19);
-	color: rgb(245, 245, 245);
+	padding: 10px 40px;
+	margin-top: 50px;
+	background-color: var(--blanco);
+	color: var(--negro);
 }
 .info__nombre {
 	margin: 20px 0px;
@@ -185,7 +187,7 @@ label {
 	padding: 5px;
 }
 .info__img {
-	width: 100%;
+	height: 145px;
 	margin-top: 10px;
 }
 

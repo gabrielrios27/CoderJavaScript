@@ -130,7 +130,6 @@ function mostrar() {
 		verificador2 = true;
 	}
 	if (verificador1 && verificador2) {
-		$('.info').css({ 'background-color': 'rgb(19, 19, 19)' });
 		modelo.cantidad = metrosCuadrados;
 		// calculo el presupuesto
 		let cantidadReal = Number(cantidad(modelo.cantidad).toFixed(2));
@@ -210,22 +209,17 @@ function mostrar() {
 		}
 	} else {
 		$('.info__container').remove();
-		$('.info').css({ 'background-color': 'rgb(252, 252, 252)' });
 	}
 }
+// funcion para detectar los cambios en el imput del codigo y mostrar el porcelanato ingresado
 function ingresaCod(value) {
 	let i = 0;
 	for (modelo of porcelanatos) {
 		if (modelo.codigo == value) {
 			i++;
-			$('.info').css({ 'background-color': 'rgb(19, 19, 19)' });
 			let presupuesto = $('.calculo');
 			$('.calculo__container').remove();
-			presupuesto.append(`
-				<div class="calculo__container">		
-					<img src="imagenes/${modelo.imagen}" class="info__img" />
-				</div>
-			`);
+
 			// cambio la seccion info
 			let info = $('.info');
 			info.append('');
@@ -237,13 +231,13 @@ function ingresaCod(value) {
 				<h4 class="info__detalle" id="porc-precio">Precio x m2: $${modelo.precio.toLocaleString(
 					'de-DE'
 				)}</h4>
+				<img src="imagenes/${modelo.imagen}" class="info__img" />
 			</div>
 			`);
 		}
 	}
 	if (i == 0) {
 		$('.info__container').remove();
-		$('.info').css({ 'background-color': 'rgb(252, 252, 252)' });
 	}
 }
 function cambio() {
