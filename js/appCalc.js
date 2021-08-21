@@ -211,7 +211,7 @@ function mostrar() {
 		$('.info__container').remove();
 	}
 }
-// funcion para agregar calculo al presupuesto
+// funcion para agregar el calculo al presupuesto
 function agregarAPresupuesto() {
 	let numModelo = Number($('#codigo').val());
 	let metrosCuadrados = Number($('#cantidad').val());
