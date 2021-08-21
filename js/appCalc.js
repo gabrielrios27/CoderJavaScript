@@ -211,6 +211,116 @@ function mostrar() {
 		$('.info__container').remove();
 	}
 }
+// funcion para agregar calculo al presupuesto
+function agregarAPresupuesto() {
+	let numModelo = Number($('#codigo').val());
+	let metrosCuadrados = Number($('#cantidad').val());
+	let i = 0;
+	// compruebo si el modelo existe en el sistema
+	for (let value of porcelanatos) {
+		if (numModelo == value.codigo) {
+			modelo = value;
+			i++;
+			verificador1 = true;
+		}
+	}
+	if (i == 0) {
+		verificador1 = false;
+	}
+	// si el modelo no existe aparece una alerta
+	if (!verificador1) {
+		$('#alerta-mod').animate(
+			{
+				'font-size': '12px',
+				height: '24px',
+				opacity: '1',
+				padding: '5px',
+			},
+			'fast',
+			function () {
+				$('#codigo').css({ color: 'red' });
+				$('#flecha1').fadeIn();
+			}
+		);
+		verificador1 = false;
+	} else {
+		$('#alerta-mod').animate(
+			{
+				'font-size': '0px',
+				height: '0px',
+				opacity: '0',
+				padding: '0',
+			},
+			'fast',
+			function () {
+				$('#codigo').css({ color: 'black' });
+				$('#flecha1').fadeOut();
+			}
+		);
+	}
+	// compruebo si los metros cuadrados son un valor positivo y que haya un valor ingresado en el input, sino se muestra alerta
+	if (metrosCuadrados <= 0 || !metrosCuadrados) {
+		$('#alerta-cant').animate(
+			{
+				'font-size': '12px',
+				height: '44px',
+				opacity: '1',
+				padding: '5px',
+			},
+			'fast',
+			function () {
+				$('#cantidad').css({ color: 'red' });
+				$('#flecha2').fadeIn('fast');
+			}
+		);
+		verificador2 = false;
+	} else {
+		$('#alerta-cant').animate(
+			{
+				'font-size': '0px',
+				height: '0px',
+				opacity: '0',
+				padding: '0',
+			},
+			'fast',
+			function () {
+				$('#cantidad').css({ color: 'black' });
+				$('#flecha2').fadeOut('fast');
+			}
+		);
+		verificador2 = true;
+	}
+	// si ambos input son correctos se procede a hacer el calculo
+	if (verificador1 && verificador2) {
+		modelo.cantidad = metrosCuadrados;
+		let verificadorCarga = false;
+
+		// check de pastina y pegamento
+		if ($('#check-pegamento').prop('checked')) {
+			modelo.pegamento = true;
+		}
+		if ($('#check-pastina').prop('checked')) {
+			modelo.pastina = true;
+		}
+		// cargo el producto elegido al arreglo en localStorage para el carrito
+		const modYCant1 = JSON.parse(localStorage.getItem('modYCant'));
+		console.log(modYCant1);
+		if (modYCant1 == null) {
+			const modYCant = [];
+			modYCant.push(modelo);
+			localStorage.setItem('modYCant', JSON.stringify(modYCant));
+			console.log(modYCant);
+			verificadorCarga = true;
+		} else {
+			modYCant1.push(modelo);
+			localStorage.setItem('modYCant', JSON.stringify(modYCant1));
+			console.log(modYCant1);
+			verificadorCarga = true;
+		}
+		if (verificadorCarga) {
+		}
+	}
+}
 // funcion para detectar los cambios en el imput del codigo y mostrar el porcelanato ingresado
 function ingresaCod(value) {
 	let i = 0;
@@ -242,7 +352,6 @@ function ingresaCod(value) {
 }
 function cambio() {
 	let inputMod = $('#codigo');
-	console.log(`el codigo nuevo es ${inputMod.val()} y el viejo es ${codViejo}`);
 	if (codViejo != inputMod.val()) {
 		inputMod.on('change', ingresaCod(inputMod.val()));
 		codViejo = inputMod.val();
@@ -260,3 +369,5 @@ setInterval(cambio, 300);
 
 let btnPre = $('#btn-pre');
 btnPre.on('click', mostrar);
+
+$('#btn-agregar').on('click', agregarAPresupuesto);
