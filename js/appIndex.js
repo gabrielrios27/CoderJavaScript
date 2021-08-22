@@ -74,7 +74,7 @@ $(document).ready(function () {
 				ceramicos.forEach((ceram) => {
 					let galeria = $('#galeria');
 					galeria.append(`
-					<div class="galeria__container" id="galeria__ceramicos">
+					<div class="galeria__container galeria__ceramicos" >
 							<img src="imagenes/${ceram.imagen}" class="galeria__img">
 							<h3 class="galeria__titulo">Ceramico ${ceram.nombre}</h3>
 							<p class="galeria__codigo">Medida: ${ceram.medida}</p>

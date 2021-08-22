@@ -1,117 +1,57 @@
+:root {
+	--blanco: #f7f7f7;
+	--amarillo: #ffec47;
+	--amarillo-claro: #fffb8d;
+	--violeta: #0804db;
+	--naranja: #ffa412;
+	--gris: rgb(204, 204, 204);
+	--negro: rgb(10, 10, 10);
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	text-decoration: none;
-	font-family: 'Patua One', cursive, serif, sans-serif;
+	font-family: 'Roboto', serif, sans-serif;
 	letter-spacing: 0.2px;
 }
 body {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-label {
-	font-weight: 200;
+	background-color: var(--blanco);
 }
 .header {
 	width: 100vw;
-	height: 70px;
+	height: 50px;
 	display: flex;
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 100;
-	background-color: rgb(248, 248, 248);
+	background-color: var(--negro);
 	box-shadow: 0 0 10px rgba(80, 80, 80, 0.548);
 }
 .header__enlace {
-	font-size: 19px;
+	font-size: 16px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 33.33%;
 	height: 100%;
 	padding: 0 20px;
-	color: rgb(19, 19, 19);
+	color: var(--blanco);
+	font-weight: 600;
 }
-.header__enlace--left {
-	background-color: rgb(250, 225, 189);
-	clip-path: polygon(
-		0 90%,
-		0 79%,
-		0 65%,
-		0 49%,
-		0 35%,
-		0 22%,
-		0 10%,
-		0 0,
-		82% 0,
-		83% 9%,
-		85% 24%,
-		88% 39%,
-		93% 53%,
-		97% 66%,
-		99% 76%,
-		100% 88%,
-		100% 100%,
-		0 100%
-	);
+.header__enlace--active {
+	color: var(--negro);
+	background-color: var(--amarillo);
+	clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
 }
-.header__enlace--center {
-	background-color: rgb(250, 225, 189);
-	clip-path: polygon(
-		0% 88%,
-		1% 76%,
-		3% 66%,
-		7% 53%,
-		12% 39%,
-		15% 24%,
-		17% 9%,
-		18% 0,
-		82% 0,
-		83% 9%,
-		85% 24%,
-		88% 39%,
-		93% 53%,
-		97% 66%,
-		99% 76%,
-		100% 88%,
-		100% 100%,
-		0 100%
-	);
-}
-.header__enlace--right {
-	background-color: rgb(250, 225, 189);
-	clip-path: polygon(
-		0% 88%,
-		1% 76%,
-		3% 66%,
-		7% 53%,
-		12% 39%,
-		15% 24%,
-		17% 9%,
-		18% 0,
-		100% 0,
-		100% 9%,
-		100% 24%,
-		100% 39%,
-		100% 53%,
-		100% 66%,
-		100% 76%,
-		100% 88%,
-		100% 100%,
-		0 100%
-	);
-}
+
 .header__logo {
-	height: 70px;
+	height: 50px;
 }
 
 /* etilos de la galeria generada por js-------------------------- */
@@ -139,11 +79,11 @@ label {
 	width: 290px;
 	padding: 20px;
 	margin: 10px;
-	background-color: rgb(238, 238, 238);
+	background-color: var(--negro);
 	border-radius: 3px;
 }
 .galeria__enlace {
-	color: rgb(26, 26, 26);
+	color: var(--blanco);
 }
 .galeria__h1 {
 	width: 100%;
@@ -156,31 +96,37 @@ label {
 	object-fit: cover;
 }
 .galeria__elegir {
+	color: var(--negro);
 	padding: 5px 0px;
 	font-size: 14px;
 	margin-top: 5px;
-	background-color: rgb(250, 225, 189);
+	background-color: var(--naranja);
 	text-align: center;
 }
 .galeria__elegir--prox {
-	background-color: rgb(189, 208, 250);
+	background-color: var(--amarillo-claro);
+}
+.galeria__ceramicos {
+	color: var(--blanco);
 }
 /* seccion de calculador------ */
 .datos {
-	width: 100%;
+	width: 50%;
 	display: flex;
 	justify-content: center;
-	background-color: rgb(247, 242, 229);
-	padding: 20px;
-	margin-top: 70px;
+	background-color: var(--gris);
+	padding: 10px;
+	margin-top: 50px;
 }
 .datos__container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
-	background-color: rgb(250, 225, 189);
+	color: var(--blanco);
+	background-color: var(--negro);
 	padding: 20px 30px;
+	border-radius: 2px;
 }
 .datos__box {
 	display: flex;
@@ -192,7 +138,6 @@ label {
 	display: inline-block;
 	max-width: 350px;
 	padding: 5px;
-	/* font-weight: 600; */
 }
 .datos__cant {
 	position: relative;
@@ -220,15 +165,21 @@ label {
 	padding-left: 10px;
 }
 .datos__button {
-	padding: 2px 8px;
-	margin: 8px;
+	padding: 4px 12px;
+	margin: 10px;
 	cursor: pointer;
+	background-color: var(--amarillo);
+	font-size: 14px;
+	font-weight: 600;
+	border-style: none;
+	border-radius: 2px;
 }
 .info {
 	width: 50%;
-	padding: 20px 40px;
-	background-color: rgb(19, 19, 19);
-	color: rgb(245, 245, 245);
+	padding: 10px 40px;
+	margin-top: 50px;
+	background-color: var(--blanco);
+	color: var(--negro);
 }
 .info__nombre {
 	margin: 20px 0px;
@@ -237,7 +188,7 @@ label {
 	padding: 5px;
 }
 .info__img {
-	width: 100%;
+	height: 145px;
 	margin-top: 10px;
 }
 
@@ -284,7 +235,7 @@ label {
 .presupuesto {
 	margin-top: 80px;
 	width: 100%;
-	padding: 20px 40px;
+	padding: 0 40px;
 }
 .presupuesto__h1 {
 	text-align: center;
