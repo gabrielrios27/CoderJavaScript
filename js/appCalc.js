@@ -6,6 +6,7 @@ let verificador1 = false;
 let verificador2 = true;
 let codViejo = 0;
 let porcelanatos = [];
+let valorAnterior = '';
 
 const dataPorc = 'data/porcelanatos.json';
 
@@ -194,19 +195,6 @@ function mostrar() {
 			<img src="imagenes/${modelo.imagen}" class="info__img" />
 		</div>
 		`);
-		// cargo el producto elegido al arreglo en localStorage para el carrito
-		const modYCant1 = JSON.parse(localStorage.getItem('modYCant'));
-		console.log(modYCant1);
-		if (modYCant1 == null) {
-			const modYCant = [];
-			modYCant.push(modelo);
-			localStorage.setItem('modYCant', JSON.stringify(modYCant));
-			console.log(modYCant);
-		} else {
-			modYCant1.push(modelo);
-			localStorage.setItem('modYCant', JSON.stringify(modYCant1));
-			console.log(modYCant1);
-		}
 	} else {
 		$('.info__container').remove();
 	}
@@ -318,20 +306,24 @@ function agregarAPresupuesto() {
 			verificadorCarga = true;
 		}
 		if (verificadorCarga) {
+			location.href = 'presupuesto.html';
 		}
 	}
 }
 // funcion para detectar los cambios en el imput del codigo y mostrar el porcelanato ingresado
 function ingresaCod(value) {
 	let i = 0;
+
+	let info = $('.info');
+	if (valorAnterior != value) {
+		$('.info__container').remove();
+	}
 	for (modelo of porcelanatos) {
 		if (modelo.codigo == value) {
+			valorAnterior = value;
 			i++;
-			let presupuesto = $('.calculo');
 			$('.calculo__container').remove();
-
 			// cambio la seccion info
-			let info = $('.info');
 			info.append('');
 			info.append(`
 			<div class="info__container">

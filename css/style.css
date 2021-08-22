@@ -252,15 +252,15 @@ label {
 	background-color: rgb(238, 238, 238);
 	margin-bottom: 15px;
 	display: grid;
-	grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 3fr 1fr 1fr 1fr 1fr 35px;
 	grid-template-rows: auto auto auto auto auto auto;
 	grid-template-areas:
-		'titulo-producto titulo-caja titulo-precio titulo-cantidad titulo-precio-total'
-		'producto caja precio cantidad precioTotal'
-		'titulo-peg-past titulo-bolsa titulo-precio-bolsa titulo-cantidad-bolsa titulo-precio-total-bol'
-		'pegamento bolsa-peg precioPeg cantidadPeg precioTotalPeg'
-		'pastina bolsaPastina precioPast cantidadPast precioTotalPast'
-		'none none none tituloTotalFinal totalFinal';
+		'titulo-producto titulo-caja titulo-precio titulo-cantidad titulo-precio-total borrar'
+		'producto caja precio cantidad precioTotal borrar'
+		'titulo-peg-past titulo-bolsa titulo-precio-bolsa titulo-cantidad-bolsa titulo-precio-total-bol borrar'
+		'pegamento bolsa-peg precioPeg cantidadPeg precioTotalPeg borrar'
+		'pastina bolsaPastina precioPast cantidadPast precioTotalPast borrar'
+		'none none none tituloTotalFinal totalFinal borrar';
 }
 .presupuesto__container h4,
 .presupuesto__container p {
@@ -289,6 +289,18 @@ label {
 }
 .titulo-precio-total {
 	grid-area: titulo-precio-total;
+}
+.borrar {
+	grid-area: borrar;
+	background-color: var(--amarillo);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.img-borrar {
+	width: 25px;
+	height: 25px;
 }
 .producto {
 	grid-area: producto;

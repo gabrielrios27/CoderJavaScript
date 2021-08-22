@@ -44,7 +44,6 @@ function imprimirPresupuesto() {
 		let precioPeg = 0;
 		let precioPast = 0;
 		i++;
-
 		let cantidadReal = Number(cantidad(porc.cantidad).toFixed(2));
 		let preciopiso = precioPorcelanato(cantidadReal);
 		let cantPegamentoPastina = cantidadPegamentoPastina(cantidadReal);
@@ -57,6 +56,9 @@ function imprimirPresupuesto() {
 			<h4 class="titulo-precio">Precio x M2</h4>
 			<h4 class="titulo-cantidad">Cantidad</h4>
 			<h4 class="titulo-precio-total">Precio</h4>
+			<div class="borrar" id="borrar${i}">
+				<img src="imagenes/borrar.png" alt="tacho de basura" class="img-borrar" >	
+		    </div>
 			<p class="producto">porcelanato ${modelo.nombre} ${modelo.medida} (codigo: ${modelo.codigo})</p>
 			<p class="caja">${modelo.caja} m2</p>
 			<p class="precio">$ ${modelo.precio}</p>
@@ -67,6 +69,7 @@ function imprimirPresupuesto() {
 		
 			</div>
 		`);
+
 		if (modelo.pegamento || modelo.pastina) {
 			$(`#presupuesto__container${i}`).append(`
 			<h4 class="titulo-peg-past">Producto complementario</h4>
@@ -101,7 +104,11 @@ function imprimirPresupuesto() {
 			<h4 class="titulo-total-final">Precio Total</h4>
 			<p class="total-final">$${precioTotal.toLocaleString('de-DE')}</p>
 			`);
-		// <img src="imagenes/${modelo.imagen}" class="presupuesto__img" />
+		$(`#borrar${i}`).on('click', function () {
+			$(`#presupuesto__container${i}`).remove();
+
+			console.log(`borro el presupuesto__container${i}`);
+		});
 	});
 }
 let presupuesto = $('.presupuesto');
