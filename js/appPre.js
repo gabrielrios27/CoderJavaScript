@@ -6,7 +6,7 @@ let precioPastina = 160;
 let modelo = '';
 let i = 0;
 
-const modYCant = JSON.parse(localStorage.getItem('modYCant'));
+let modYCant = JSON.parse(localStorage.getItem('modYCant'));
 // funciones
 function cantidad(metrosCuadrados) {
 	cantidadDeCajas = Math.ceil(metrosCuadrados / modelo.caja);
@@ -56,7 +56,7 @@ function imprimirPresupuesto() {
 			<h4 class="titulo-precio">Precio x M2</h4>
 			<h4 class="titulo-cantidad">Cantidad</h4>
 			<h4 class="titulo-precio-total">Precio</h4>
-			<div class="borrar" id="borrar${i}">
+			<div class="borrar" id="borrar${i}" name="${i}">
 				<img src="imagenes/borrar.png" alt="tacho de basura" class="img-borrar" >	
 		    </div>
 			<p class="producto">porcelanato ${modelo.nombre} ${modelo.medida} (codigo: ${modelo.codigo})</p>
@@ -104,13 +104,34 @@ function imprimirPresupuesto() {
 			<h4 class="titulo-total-final">Precio Total</h4>
 			<p class="total-final">$${precioTotal.toLocaleString('de-DE')}</p>
 			`);
+		// boton para borrar del presupuesto
 		$(`#borrar${i}`).on('click', function () {
-			$(`#presupuesto__container${i}`).remove();
+			$(this).parent().remove();
+			let indiceBorrado = Number($(this).attr('name'));
+			console.log(indiceBorrado);
+			let indice = 0;
+			let nuevoArreglo = [];
+			if (modYCant.length == 1) {
+				modYCant = [];
+				localStorage.setItem('modYCant', JSON.stringify(modYCant));
+			} else {
+				for (let producto of modYCant) {
+					indice++;
 
-			console.log(`borro el presupuesto__container${i}`);
+					if (indice !== indiceBorrado) {
+						nuevoArreglo.push(producto);
+						modYCant = [...nuevoArreglo];
+					}
+				}
+				localStorage.setItem('modYCant', JSON.stringify(modYCant));
+				console.log(nuevoArreglo);
+				console.log(modYCant);
+				location.reload();
+			}
 		});
 	});
 }
+
 let presupuesto = $('.presupuesto');
 presupuesto.append(`
 			<h1 class="presupuesto__h1">Presupuestos</h1>
