@@ -117,9 +117,11 @@ body {
 	background-color: var(--gris);
 	padding: 10px;
 	margin-top: 50px;
+	height: 370px;
 }
 .datos__container {
 	display: flex;
+	height: 345px;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
@@ -131,13 +133,23 @@ body {
 .datos__box {
 	display: flex;
 	flex-direction: column;
-	margin: 5px;
+	margin: 0 5px;
 	position: relative;
 }
 .datos__label {
 	display: inline-block;
 	max-width: 350px;
 	padding: 5px;
+}
+.datos__nombre {
+	height: 0px;
+	opacity: 0;
+	padding: 2px;
+	color: var(--amarillo);
+	margin: 4px 0;
+}
+.datos__p {
+	margin-left: 2px;
 }
 .datos__cant {
 	position: relative;

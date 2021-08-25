@@ -313,16 +313,42 @@ function agregarAPresupuesto() {
 // funcion para detectar los cambios en el imput del codigo y mostrar el porcelanato ingresado
 function ingresaCod(value) {
 	let i = 0;
-
+	let datosNombre = $('.datos__nombre');
 	let info = $('.info');
 	if (valorAnterior != value) {
 		$('.info__container').remove();
+		$('.datos__p').remove();
 	}
 	for (modelo of porcelanatos) {
 		if (modelo.codigo == value) {
 			valorAnterior = value;
 			i++;
 			$('.calculo__container').remove();
+			$('#alerta-mod').animate(
+				{
+					'font-size': '0px',
+					height: '0px',
+					opacity: '0',
+					padding: '0',
+				},
+				'fast',
+				function () {
+					$('#codigo').css({ color: 'black' });
+					$('#flecha1').fadeOut();
+				}
+			);
+			$('.datos__nombre').animate(
+				{
+					height: '18px',
+					opacity: '1',
+				},
+				'fast',
+				function () {
+					$('#codigo').css({ color: 'black' });
+				}
+			);
+			// cambio el p arriba del input con el nombre actual
+			datosNombre.append(`<p class="datos__p">Porcelanato ${modelo.nombre} ${modelo.medida}</p>`);
 			// cambio la seccion info
 			info.append('');
 			info.append(`
@@ -340,6 +366,17 @@ function ingresaCod(value) {
 	}
 	if (i == 0) {
 		$('.info__container').remove();
+		$('.datos__nombre').animate(
+			{
+				height: '0px',
+				opacity: '0',
+			},
+			'fast',
+			function () {
+				$('#codigo').css({ color: 'black' });
+			}
+		);
+		$('.datos__p').remove();
 	}
 }
 function cambio() {
