@@ -341,6 +341,7 @@ function ingresaCod(value) {
 				{
 					height: '18px',
 					opacity: '1',
+					margin: '4px 0',
 				},
 				'fast',
 				function () {
@@ -370,6 +371,7 @@ function ingresaCod(value) {
 			{
 				height: '0px',
 				opacity: '0',
+				margin: '0',
 			},
 			'fast',
 			function () {
@@ -381,9 +383,25 @@ function ingresaCod(value) {
 }
 function cambio() {
 	let inputMod = $('#codigo');
+	let inputCant = $('#cantidad');
 	if (codViejo != inputMod.val()) {
 		inputMod.on('change', ingresaCod(inputMod.val()));
 		codViejo = inputMod.val();
+	}
+	if (inputCant.val() > 0) {
+		$('#alerta-cant').animate(
+			{
+				'font-size': '0px',
+				height: '0px',
+				opacity: '0',
+				padding: '0',
+			},
+			'fast',
+			function () {
+				$('#cantidad').css({ color: 'black' });
+				$('#flecha2').fadeOut('fast');
+			}
+		);
 	}
 }
 $('.datos__box:first-child').append(
